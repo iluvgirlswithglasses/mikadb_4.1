@@ -34,7 +34,7 @@ public class LeaderboardEntryDAO {
     public LeaderboardAnimeModel animeConstructor(ResultSet rs) throws SQLException {
         String id = rs.getString("entry_id");
         ResultSet anime = getCreatedStatement().executeQuery(
-                "select title from anime where id=" + id + ";"
+            "select title from anime where id=" + id + ";"
         );
         return new LeaderboardAnimeModel(id, anime.getString("title"));
     }
@@ -42,7 +42,7 @@ public class LeaderboardEntryDAO {
     public LeaderboardEntry<LeaderboardEntryModel> entryConstructor(ResultSet rs) throws SQLException {
         // ranking
         LeaderboardEntry<LeaderboardEntryModel> res = new LeaderboardEntry<>(
-                rs.getInt("id"), rs.getInt("leaderboard_id"), rs.getInt("rank"), rs.getString("description")
+            rs.getInt("id"), rs.getInt("leaderboard_id"), rs.getInt("rank"), rs.getString("description")
         );
         // model
         switch (rs.getString("entry_table")) {
@@ -65,7 +65,7 @@ public class LeaderboardEntryDAO {
     public LeaderboardAnimeModel animeConstructor(HttpServletRequest request) throws SQLException {
         String id = request.getParameter("entry-id");
         ResultSet anime = getCreatedStatement().executeQuery(
-                "select title from anime where id=" + id + ";"
+            "select title from anime where id=" + id + ";"
         );
         return new LeaderboardAnimeModel(id, anime.getString("title"));
     }
@@ -74,10 +74,10 @@ public class LeaderboardEntryDAO {
         try {
             // ranking
             LeaderboardEntry<LeaderboardEntryModel> res = new LeaderboardEntry<>(
-                    Integer.parseInt(request.getParameter("id")),
-                    Integer.parseInt(request.getParameter("leaderboard-id")),
-                    Integer.parseInt(request.getParameter("rank")),
-                    request.getParameter("description")
+                Integer.parseInt(request.getParameter("id")),
+                Integer.parseInt(request.getParameter("leaderboard-id")),
+                Integer.parseInt(request.getParameter("rank")),
+                request.getParameter("description")
             );
             // model
             switch (request.getParameter("entry-table")) {
@@ -104,7 +104,7 @@ public class LeaderboardEntryDAO {
     public LeaderboardEntry<LeaderboardEntryModel> get(int id) {
         try {
             ResultSet rs = getCreatedStatement().executeQuery(
-                    "select * from leaderboard_entry where id=" + id + ";"
+                "select * from leaderboard_entry where id=" + id + ";"
             );
             if (rs.next()) return entryConstructor(rs);
         } catch (SQLException e) {
@@ -120,7 +120,7 @@ public class LeaderboardEntryDAO {
         if (leaderboard == null) return new ArrayList<>();
         //
         ResultSet rs = getCreatedStatement().executeQuery(
-                "select * from leaderboard_entry where leaderboard_id=" + leaderboardId + ";"
+            "select * from leaderboard_entry where leaderboard_id=" + leaderboardId + ";"
         );
         while (rs.next()) res.add(entryConstructor(rs));
         //
@@ -133,7 +133,9 @@ public class LeaderboardEntryDAO {
     }
 
     public void deleteLeaderboard(int leaderboardId) throws SQLException {
-        getCreatedStatement().executeUpdate("delete * from leaderboard_entry where leaderboard_id=" + leaderboardId + ";");
+        getCreatedStatement().executeUpdate(
+            "delete * from leaderboard_entry where leaderboard_id=" + leaderboardId + ";"
+        );
     }
 
     private void rankedSort(List<LeaderboardEntry<LeaderboardEntryModel>> lst) throws SQLException {
@@ -159,14 +161,14 @@ public class LeaderboardEntryDAO {
 
     public void add(LeaderboardEntry<LeaderboardEntryModel> e) throws SQLException {
         PreparedStatement state = getDatabaseAccess().getConn().prepareStatement(
-                "insert into leaderboard_entry (entry_table, entry_id, leaderboard_id, rank, description) values (?, ?, ?, ?, ?);"
+            "insert into leaderboard_entry (entry_table, entry_id, leaderboard_id, rank, description) values (?, ?, ?, ?, ?);"
         );
         update(state, e);
     }
 
     public void update(LeaderboardEntry<LeaderboardEntryModel> e) throws SQLException {
         PreparedStatement state = getDatabaseAccess().getConn().prepareStatement(
-                "update leaderboard_entry set entry_table=?, entry_id=?, leaderboard_id=?, rank=?, description=? where id=" + e.getId() + ";"
+            "update leaderboard_entry set entry_table=?, entry_id=?, leaderboard_id=?, rank=?, description=? where id=" + e.getId() + ";"
         );
         update(state, e);
     }

@@ -28,8 +28,8 @@ public class LeaderboardDAO {
      * */
     public LeaderboardModel leaderboardConstructor(ResultSet rs) throws SQLException {
         return new LeaderboardModel(
-                rs.getInt("id"), rs.getInt("priority"), rs.getString("name"),
-                rs.getString("description"), rs.getBoolean("ranked"), rs.getString("category")
+            rs.getInt("id"), rs.getInt("priority"), rs.getString("name"),
+            rs.getString("description"), rs.getBoolean("ranked"), rs.getString("category")
         );
     }
 
@@ -59,7 +59,7 @@ public class LeaderboardDAO {
     public LeaderboardModel get(int id) {
         try {
             ResultSet rs = getCreatedStatement().executeQuery(
-                    "select * from leaderboard where id=" + id + ";"
+                "select * from leaderboard where id=" + id + ";"
             );
             if (rs.next()) return leaderboardConstructor(rs);
             return null;
@@ -73,7 +73,7 @@ public class LeaderboardDAO {
         //
         try {
             ResultSet rs = getCreatedStatement().executeQuery(
-                    "select * from leaderboard order by priority asc, name desc;"
+                "select * from leaderboard order by priority asc, name desc;"
             );
             while (rs.next()) {
                 res.add(leaderboardConstructor(rs));
@@ -96,14 +96,14 @@ public class LeaderboardDAO {
 
     public void add(LeaderboardModel e) throws SQLException {
         PreparedStatement state = getDatabaseAccess().getConn().prepareStatement(
-                "insert into leaderboard (priority, name, description, ranked, category) values (?, ?, ?, ?, ?);"
+            "insert into leaderboard (priority, name, description, ranked, category) values (?, ?, ?, ?, ?);"
         );
         update(state, e);
     }
 
     public void update(LeaderboardModel e) throws SQLException {
         PreparedStatement state = getDatabaseAccess().getConn().prepareStatement(
-                "update leaderboard set priority=?, name=?, description=?, ranked=?, category=? where id=" + e.getId() + ";"
+            "update leaderboard set priority=?, name=?, description=?, ranked=?, category=? where id=" + e.getId() + ";"
         );
         update(state, e);
     }

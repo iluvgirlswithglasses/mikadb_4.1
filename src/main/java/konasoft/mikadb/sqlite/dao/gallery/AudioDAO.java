@@ -54,13 +54,13 @@ public class AudioDAO extends DAO<AudioModel> {
     @Override
     public AudioModel objectConstructor(ResultSet rs) throws SQLException {
         return new AudioModel(
-                rs.getInt("id"),
-                rs.getString("cat"),
-                rs.getString("title"),
-                rs.getString("src"),
-                rs.getString("src_link"),
-                rs.getBoolean("available"),
-                rs.getInt("tier")
+            rs.getInt("id"),
+            rs.getString("cat"),
+            rs.getString("title"),
+            rs.getString("src"),
+            rs.getString("src_link"),
+            rs.getBoolean("available"),
+            rs.getInt("tier")
         );
     }
 }
