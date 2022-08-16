@@ -21,6 +21,7 @@ import java.util.HashMap;
 import java.util.List;
 
 @RestController
+@RequestMapping(LeaderboardsController.PATH)
 public class LeaderboardsController {
     public static final String PATH = "/leaderboards";
 
@@ -33,7 +34,7 @@ public class LeaderboardsController {
     /**
      * browsing
      * */
-    @RequestMapping(PATH)
+    @RequestMapping()
     public ModelAndView leaderboards() {
         ModelAndView mav = new ModelAndView(PATH);
         ThemeAPreparer.prepare(mav, page);
@@ -47,7 +48,7 @@ public class LeaderboardsController {
         return mav;
     }
 
-    @RequestMapping(PATH + "/{id}")
+    @RequestMapping("/{id}")
     public ModelAndView leaderboard(@PathVariable String id) {
         ModelAndView mav = new ModelAndView("leaderboards/view");
         // get leaderboard's data

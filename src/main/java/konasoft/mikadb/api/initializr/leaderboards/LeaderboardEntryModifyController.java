@@ -17,6 +17,7 @@ import javax.servlet.http.HttpServletRequest;
 import java.sql.SQLException;
 
 @RestController
+@RequestMapping(LeaderboardEntryModifyController.PATH)
 public class LeaderboardEntryModifyController {
     /**
      *
@@ -39,7 +40,7 @@ public class LeaderboardEntryModifyController {
     /**
      * add
      * */
-    @RequestMapping(PATH + "/add")
+    @RequestMapping("/add")
     public ModelAndView add() {
         ModelAndView mav = new ModelAndView("leaderboards/mods/add-entry");
         ThemeAPreparer.prepare(mav, page);
@@ -53,7 +54,7 @@ public class LeaderboardEntryModifyController {
         return mav;
     }
 
-    @RequestMapping(PATH + "/add/submit")
+    @RequestMapping("/add/submit")
     public ModelAndView addSubmit(HttpServletRequest request) {
         LeaderboardEntryDAO dao = new LeaderboardEntryDAO();
         try {
@@ -67,7 +68,7 @@ public class LeaderboardEntryModifyController {
     /**
      * add shortcut
      * */
-    @RequestMapping(PATH + "/add/table={table},id={id}")
+    @RequestMapping("/add/table={table},id={id}")
     public ModelAndView add(@PathVariable String table, @PathVariable String id) {
         ModelAndView mav = new ModelAndView("leaderboards/mods/add-entry");
         ThemeAPreparer.prepare(mav, page);
@@ -85,7 +86,7 @@ public class LeaderboardEntryModifyController {
     /**
      * edit
      * */
-    @RequestMapping(PATH + "/view/{id}")
+    @RequestMapping("/view/{id}")
     public ModelAndView view(@PathVariable String id) {
         ModelAndView mav = new ModelAndView("leaderboards/mods/view-entry");
         ThemeAPreparer.prepare(mav, page);
@@ -101,7 +102,7 @@ public class LeaderboardEntryModifyController {
         return mav;
     }
 
-    @RequestMapping(PATH + "/edit/{id}")
+    @RequestMapping("/edit/{id}")
     public ModelAndView edit(@PathVariable String id) {
         ModelAndView mav = new ModelAndView("leaderboards/mods/edit-entry");
         ThemeAPreparer.prepare(mav, page);
@@ -116,7 +117,7 @@ public class LeaderboardEntryModifyController {
         return mav;
     }
 
-    @RequestMapping(PATH + "/edit/submit")
+    @RequestMapping("/edit/submit")
     public ModelAndView editSubmit(HttpServletRequest request) {
         LeaderboardEntryDAO dao = new LeaderboardEntryDAO();
         try {
@@ -137,7 +138,7 @@ public class LeaderboardEntryModifyController {
     /**
      * delete
      * */
-    @RequestMapping(PATH + "/delete/{id}")
+    @RequestMapping("/delete/{id}")
     public ModelAndView delete(@PathVariable String id) {
         try {
             LeaderboardEntryDAO dao = new LeaderboardEntryDAO();

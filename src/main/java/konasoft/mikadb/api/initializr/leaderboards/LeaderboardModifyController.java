@@ -14,6 +14,7 @@ import javax.servlet.http.HttpServletRequest;
 import java.sql.SQLException;
 
 @RestController
+@RequestMapping(LeaderboardModifyController.PATH)
 public class LeaderboardModifyController {
     /**
      *
@@ -28,7 +29,7 @@ public class LeaderboardModifyController {
     /**
      * add
      * */
-    @RequestMapping(PATH + "/add")
+    @RequestMapping("/add")
     public ModelAndView add() {
         ModelAndView mav = new ModelAndView("/leaderboards/mods/add-leaderboard");
         ThemeAPreparer.prepare(mav, page);
@@ -39,7 +40,7 @@ public class LeaderboardModifyController {
         return mav;
     }
 
-    @RequestMapping(PATH + "/add/submit")
+    @RequestMapping("/add/submit")
     public ModelAndView addSubmit(HttpServletRequest request) {
         LeaderboardDAO dao = new LeaderboardDAO();
         try {
@@ -54,7 +55,7 @@ public class LeaderboardModifyController {
     /**
      * modification
      * */
-    @RequestMapping(PATH + "/edit/{id}")
+    @RequestMapping("/edit/{id}")
     public ModelAndView edit(@PathVariable String id) {
         ModelAndView mav = new ModelAndView("leaderboards/mods/edit-leaderboard");
         ThemeAPreparer.prepare(mav, page);
@@ -69,7 +70,7 @@ public class LeaderboardModifyController {
         return mav;
     }
 
-    @RequestMapping(PATH + "/edit/submit")
+    @RequestMapping("/edit/submit")
     public ModelAndView editSubmit(HttpServletRequest request) {
         LeaderboardDAO dao = new LeaderboardDAO();
         try {
@@ -89,7 +90,7 @@ public class LeaderboardModifyController {
     /**
      * delete
      * */
-    @RequestMapping(PATH + "/delete/{id}")
+    @RequestMapping("/delete/{id}")
     public ModelAndView delete(@PathVariable String id) {
         try {
             new LeaderboardDAO().delete(Integer.parseInt(id));

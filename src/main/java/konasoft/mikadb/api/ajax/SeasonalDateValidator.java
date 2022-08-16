@@ -8,8 +8,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 @RestController
+@RequestMapping("/ajax/SeasonalDateValidator/")
 public class SeasonalDateValidator {
-    @RequestMapping("/ajax/SeasonalDateValidator/")
+    @RequestMapping("")
     public void validate(
             HttpServletRequest request,
             HttpServletResponse response
