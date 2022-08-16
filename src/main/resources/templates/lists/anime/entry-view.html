@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<!--suppress ALL -->
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<link rel="stylesheet" href="/ss/page/lists/anime/form.css">
+
+<script src="/js/theme/theme_a/skip_banner.js"></script>
+
+<div>
+    <div class="entry-form">
+        <!-- id -->
+        <div class="field-container">
+            <p class="field-label">ID</p>
+            <p th:text="${ entry.id }" class="field field-attr-id"></p>
+        </div>
+
+        <!-- title -->
+        <div class="field-container">
+            <p class="field-label">Title</p>
+            <p th:text="${ entry.title }" class="field" />
+        </div>
+
+        <!-- franchise -->
+        <div class="field-container">
+            <p class="field-label">Franchise</p>
+            <a class="field"
+               th:text="${ entry.franchise.name }"
+               th:href="${ page.stringPath } + '/franchise=' + ${ entry.franchise.name }"></a>
+        </div>
+
+        <!-- comment -->
+        <div class="field-container">
+            <p class="field-label">Comment</p>
+            <p th:utext="${ entry.comment }" class="field"></p>
+        </div>
+
+        <!-- type -->
+        <div class="field-container">
+            <p class="field-label">Type</p>
+            <p th:text="${ typeDecoder.TYPE[entry.type] }" class="field"></p>
+        </div>
+
+        <!-- state -->
+        <div class="field-container">
+            <p class="field-label">State</p>
+            <p th:text="${ stateDecoder.STATE[entry.state] }" class="field"></p>
+        </div>
+
+        <!-- seen -->
+        <div class="field-container">
+            <p class="field-label">Seen</p>
+            <p th:text="${ entry.seen }" class="field"></p>
+        </div>
+
+        <!-- progress -->
+        <div class="field-container">
+            <p class="field-label">Progress</p>
+            <div class="field field-attr-progress" style="display: flex; flex-direction: row;">
+                <span class="prog" th:text="${ entry.getProgress } + ' / ' + ${ entry.episodes }"></span>
+            </div>
+        </div>
+
+        <!-- rating -->
+        <div class="field-container">
+            <p class="field-label">Rating</p>
+            <p th:utext="${ ratingDecoder.getTextHtml(entry.rating) }" class="field"></p>
+        </div>
+
+        <!-- startDate -->
+        <div class="field-container">
+            <p class="field-label">Started Date</p>
+            <div class="multiple-fields">
+                <!-- year -->
+                <p class="field">
+                    <span th:text="${ dateDecoder.get(entry.startDate.year) }"></span>
+                </p>
+                <!-- season -->
+                <p class="field">
+                    <span th:text="${ dateDecoder.getSeason(entry.startDate.season) }"></span>
+                </p>
+                <!-- month -->
+                <p class="field">
+                    <span th:text="${ dateDecoder.getMonth(entry.startDate.month) }"></span>
+                </p>
+                <!-- day -->
+                <p class="field">
+                    <span th:text="${ dateDecoder.get(entry.startDate.day) }"></span>
+                </p>
+            </div>
+        </div>
+
+        <!-- completeDate -->
+        <div class="field-container">
+            <p class="field-label">Completed Date</p>
+            <div class="multiple-fields">
+                <!-- year -->
+                <p class="field">
+                    <span th:text="${ dateDecoder.get(entry.completeDate.year) }"></span>
+                </p>
+                <!-- season -->
+                <p class="field">
+                    <span th:text="${ dateDecoder.getSeason(entry.completeDate.season) }"></span>
+                </p>
+                <!-- month -->
+                <p class="field">
+                    <span th:text="${ dateDecoder.getMonth(entry.completeDate.month) }"></span>
+                </p>
+                <!-- day -->
+                <p class="field">
+                    <span th:text="${ dateDecoder.get(entry.completeDate.day) }"></span>
+                </p>
+            </div>
+        </div>
+
+        <!-- episodes -->
+        <div class="field-container">
+            <p class="field-label">Episodes</p>
+            <p th:text="${ entry.episodes }" class="field"></p>
+        </div>
+
+        <!-- duration -->
+        <div class="field-container">
+            <p class="field-label">Dur/ep</p>
+            <p th:text="${ entry.duration }" class="field"></p>
+        </div>
+
+        <!-- rewatchNotes -->
+        <div class="field-container">
+            <p class="field-label">Rewatch Notes</p>
+            <p th:utext="${ entry.rewatchNotes }" class="field"></p>
+        </div>
+    </div>
+
+    <span class="note" style="display: block; margin-left: 2.5rem; margin-bottom: 0.5rem;"
+    >These fields are often be auto completed by <span style="color: var(--font-color-em); font-weight: bold"
+    >MAL-API</span></span>
+
+    <div class="entry-form">
+        <!-- malId -->
+        <div class="field-container">
+            <p class="field-label">MAL ID</p>
+            <p th:text="${ entry.malId }" class="field">
+        </div>
+
+        <!-- malURL -->
+        <div class="field-container">
+            <p class="field-label">MAL URL</p>
+            <a th:href="${ entry.malURL }" th:text="${ entry.malURL }" class="field"></a>
+        </div>
+
+        <!-- titleEnglish -->
+        <div class="field-container">
+            <p class="field-label">English Title</p>
+            <p th:text="${ entry.titleEnglish }" class="field">
+        </div>
+
+        <!-- titleJapanese -->
+        <div class="field-container">
+            <p class="field-label">Japanese Title</p>
+            <p th:text="${ entry.titleJapanese }" class="field">
+        </div>
+
+        <!-- source -->
+        <div class="field-container">
+            <p class="field-label">Source</p>
+            <p th:text="${ entry.source }" class="field">
+        </div>
+
+        <!-- status -->
+        <div class="field-container">
+            <p class="field-label">Status</p>
+            <p th:text="${ entry.status }" class="field">
+        </div>
+
+        <!-- premiered -->
+        <div class="field-container">
+            <p class="field-label">Premiered</p>
+            <p th:text="${ entry.premiered }" class="field">
+        </div>
+
+        <!-- aired -->
+        <div class="field-container">
+            <p class="field-label">Aired Date</p>
+            <div class="multiple-fields">
+                <!-- year -->
+                <p class="field">
+                    <!-- 1 == YEAR in Calendar -->
+                    <span th:switch="${ entry.aired.get(1) }">
+                        <span th:case="-1"
+                              th:text="'Unknown'"></span>
+                        <span th:case="*"
+                              th:text="${ entry.aired.get(1) }"></span>
+                    </span>
+                </p>
+                <!-- month -->
+                <p class="field">
+                    <!-- 2 == MONTH in Calendar -->
+                    <span th:switch="${ entry.aired.get(2) }">
+                        <span th:case="-1"
+                              th:text="'Unknown'"></span>
+                        <span th:case="*"
+                              th:text="${ dateDecoder.getMonth(entry.aired.get(2)) }"></span>
+                    </span>
+                </p>
+                <!-- day -->
+                <p class="field">
+                    <!-- 5 == DAY_OF_MONTH in Calendar -->
+                    <span th:switch="${ entry.aired.get(5) }">
+                        <span th:case="-1"
+                              th:text="'Unknown'"></span>
+                        <span th:case="*"
+                              th:text="${ entry.aired.get(5) }"></span>
+                    </span>
+                </p>
+            </div>
+        </div>
+
+        <!-- finishedAiring -->
+        <div class="field-container">
+            <p class="field-label">Finished Airing</p>
+            <div class="multiple-fields">
+                <!-- year -->
+                <p class="field">
+                    <!-- 1 == YEAR in Calendar -->
+                    <span th:switch="${ entry.finishedAiring.get(1) }">
+                        <span th:case="-1"
+                              th:text="'Unknown'"></span>
+                        <span th:case="*"
+                              th:text="${ entry.finishedAiring.get(1) }"></span>
+                    </span>
+                </p>
+                <!-- month -->
+                <p class="field">
+                    <!-- 2 == MONTH in Calendar -->
+                    <span th:switch="${ entry.finishedAiring.get(2) }">
+                        <span th:case="-1"
+                              th:text="'Unknown'"></span>
+                        <span th:case="*"
+                              th:text="${ dateDecoder.getMonth(entry.finishedAiring.get(2)) }"></span>
+                    </span>
+                </p>
+                <!-- day -->
+                <p class="field">
+                    <!-- 5 == DAY_OF_MONTH in Calendar -->
+                    <span th:switch="${ entry.finishedAiring.get(5) }">
+                        <span th:case="-1"
+                              th:text="'Unknown'"></span>
+                        <span th:case="*"
+                              th:text="${ entry.finishedAiring.get(5) }"></span>
+                    </span>
+                </p>
+            </div>
+        </div>
+
+        <!-- openingThemes -->
+        <div class="field-container">
+            <p class="field-label">Opening Themes</p>
+            <p name="opening-themes" class="field field-attr-opening-themes field-disabled" disabled>
+                <span th:each="op: ${ entry.openingThemes }">
+                    <span th:text="${ op }"></span>,<br/>
+                </span>
+            </p>
+        </div>
+
+        <!-- endingThemes -->
+        <div class="field-container">
+            <p class="field-label">Ending Themes</p>
+            <p name="ending-themes" class="field">
+                <span th:each="ed: ${ entry.endingThemes }">
+                    <span th:text="${ ed }"></span>,<br/>
+                </span>
+            </p>
+        </div>
+
+        <!-- studios -->
+        <div class="field-container">
+            <p class="field-label">Studios</p>
+            <p name="studios" class="field">
+                <span th:each="s: ${ entry.studios }">
+                    <span th:text="${ s }"></span>,<br/>
+                </span>
+            </p>
+        </div>
+
+        <!-- genres -->
+        <div class="field-container">
+            <p class="field-label">Genres</p>
+            <p name="genres" class="field">
+                <span th:each="s: ${ entry.genres }">
+                    <span th:text="${ s }"></span>,<br/>
+                </span>
+            </p>
+        </div>
+
+        <!-- producers -->
+        <div class="field-container">
+            <p class="field-label">Producers</p>
+            <p name="producers" class="field">
+                <span th:each="p: ${ entry.producers }">
+                    <span th:text="${ p }"></span>,<br/>
+                </span>
+            </p>
+        </div>
+
+        <!-- licensors -->
+        <div class="field-container">
+            <p class="field-label">Licensors</p>
+            <p name="licensors" class="field">
+                <span th:each="l: ${ entry.licensors }">
+                    <span th:text="${ l }"></span>,<br/>
+                </span>
+            </p>
+        </div>
+    </div>
+</div>
+</html>

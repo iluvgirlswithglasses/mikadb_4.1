@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<!-- pretty much a copy-paste from anime.html -->
+
+<head th:replace="fragments/theme/theme_a/head :: head"></head>
+<head>
+    <meta charset="UTF-8">
+    <title>mikaDb Game List</title>
+    <link rel="stylesheet" href="/ss/pallete/pearl.css">
+    <link rel="stylesheet" href="/ss/utils/button.css">
+
+    <link rel="stylesheet" href="/ss/page/lists/anime/utils_bar.css">
+    <link rel="stylesheet" href="/ss/page/lists/anime/entry_display.css">
+    <link rel="stylesheet" href="/ss/page/lists/anime/screen_xl.css">
+    <link rel="stylesheet" href="/ss/page/lists/anime/screen_lg.css">
+
+    <link rel="stylesheet" href="/ss/page/lists/game/display_proportion.css">
+    <link rel="stylesheet" href="/ss/page/lists/game/high_rated_entries.css">
+</head>
+<script th:replace="fragments/theme/theme_a/script"></script>
+
+<body>
+<div id="main-container" class="container">
+    <div th:replace="fragments/theme/theme_a/header"></div>
+    <div id="list-data">
+        <!-- the left bar -->
+        <div>
+            <div id="utils-bar-menu-button">
+                <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#888888" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+            </div>
+            <div id="utils-bar">
+                <div class="utils-bar-item util-search">
+                    <img class="util-search-icon icon" src="/icons/search.png">
+                    <input placeholder="Search" />
+                </div>
+                <div class="utils-bar-item util-add" style="margin-top: -1.5rem;">
+                    <button id="add-entry-button" class="fancy-button">Add an Entry</button>
+                </div>
+                <div class="utils-bar-item util-option util-sort">
+                    <h4 class="utils-bar-item-header">Sort by</h4>
+                    <div class="options-list">
+                        <p class="option option-date" value="date">Date</p>
+                        <p class="option option-title" value="title">Title</p>
+                        <p class="option option-franchise" value="franchise">Franchise</p>
+                        <p class="option option-rating" value="rating">Rating</p>
+                    </div>
+                </div>
+                <div class="utils-bar-item util-option util-ratingfilt">
+                    <h4 class="utils-bar-item-header">Rating Filter</h4>
+                    <div class="options-list">
+                        <p class="option option-all" value="all">All Entries</p>
+                        <!--/*@thymesVar id="ratingsF" type="java.util.Arrays"*/-->
+                        <div th:each="i, state: ${ ratingDecoder.RATING_SHORT }">
+                            <div th:utext="${ratingDecoder.getTextHtml(state.index)}"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- the game list -->
+        <div id="entries-list">
+            <!-- loop through hashmap -->
+            <div th:each="map: ${ entriesList }">
+                <!-- title of the group, which is the key of the hashmap -->
+                <div class="section-devider" th:text="${ map.key }"></div>
+                <!-- display keys -->
+                <div class="gb-c dp-c">
+                    <span class="dp-p dp-p-pp"></span>
+                    <span class="dp-p dp-p-title">Title</span>
+                    <span class="dp-p dp-p-rating">Rating</span>
+                    <span class="dp-p dp-p-complete-date">Completed Date</span>
+                </div>
+                <!-- display entries that belong in the group -->
+                <div th:each="entry: ${ map.value }"
+                     th:class="'e-c dp-c e-r-' + ${ entry.getRating() } "
+                     th:id="'entry-card-' + ${ entry.getId() }"
+                     th:onclick="|window.open('@{${page.stringPath} + '/view/' + ${entry.id}}', '_blank')|">
+
+                    <!--
+                    <div class="e-i e-i-large-profile-pic"
+                    ><img th:src="${ entry.getProfilePic() }"></div>
+                    -->
+
+                    <div class="e-i e-i-profile-pic dp-p dp-p-pp"
+                    ><img th:src="${ entry.getProfilePic() }"></div>
+
+                    <span class="e-i e-i-title dp-p dp-p-title"
+                          th:text="${ entry.getTitle() }"></span>
+
+                    <span class="e-i e-i-rating dp-p dp-p-rating"
+                          th:text="${ ratingDecoder.RATING_SHORT[entry.getRating()] }"></span>
+
+                    <span class="e-i e-i-complete-date dp-p dp-p-complete-date"
+                          th:text="${ entry.completeDate.getString() }"></span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="fragments/theme/theme_a/head :: head"></head>
+<head>
+    <meta charset="UTF-8">
+    <title>The Single Rating System</title>
+    <link rel="stylesheet" href="/ss/pallete/spring.css">
+    <link rel="stylesheet" href="/ss/page/gallery/chitoyuuki-sys.css">
+</head>
+<script th:replace="fragments/theme/theme_a/script"></script>
+
+<body>
+<div id="main-container" class="container">
+    <div th:replace="fragments/theme/theme_a/header"></div>
+
+    <div class="section-devider container">About</div>
+    <div class="container sect about-sect">
+        <p>
+            Chito Yuuki System - An unsuccessful attempt due to its lenient ruler of rating. The Single System might fix them all, for one last time.
+            <br>
+            While this sys seems like a clone of <a href="https://myanimelist.net/profile/SingleH">SingleH</a>, I reckon that I only copied <a href="https://myanimelist.net/profile/SingleH">SingleH</a>'s words to express my ideas, not to live under his ideas, because my old rating system is already surprisingly identical to his.
+            <br>
+            Original criteria: <span style="color: var(--font-color-alt-em); font-style: italic;"
+        >Characters, Relationships, Creativity, Progress, Conveyance, Story, Morals, Cinematography, Sound and Music
+            </span>
+        </p>
+        <p>
+            Unlike Chito Yuuki Sys whose rating is based on an anime's strongest aspect, The Single Sys is far less tolerating. An anime only earns its score if it offers enough criteria.
+        </p>
+        <p>
+            This Sys is implemented at 2:00AM 10-Apr-2022, which immediately lead to The Commenting Project. 
+            <br>
+            The Commenting Project is later done on 11-Jun-2022.
+        </p>
+    </div>
+    <div class="container sect about-sect">
+        <p>
+            Reminder from myself:
+        </p>
+        <p>
+            - Those 6s or higher are animes that earn my wholehearted respect
+            - For those which are 7 or below, +1 if they have at least 1 aspect that is done in a top-notch masterful manner<br>
+            - Keep the 10s for the absolute favorites and the 1s for the absolute shameless garbages<br>
+            - Do not hesitate to give low score. It's a way to respect the higher rated<br>
+            - Most linear stories have 4 stages: Opening, Developing, Climax, and Ending. Do not judge anything by its initial ideas or opening stage. The three episode rule makes no sense. See how trash Shield Hero is?
+        </p>
+    </div>
+    <div class="container sect about-sect">
+        <p>
+            Reminder from <a href="https://myanimelist.net/profile/SingleH">SingleH</a>:
+        </p>
+        <p>
+            Something may be called objectively bad if it is flawed on a technical level. Take the following:
+            <br>
+            - Bad animation. Off-model key frames, disjoint or missing in-betweens, overuse of stills, poorly integrated CG animation, etc. <br>
+            - Bad writing. Logical fallacies like plot holes or contradictory character motivations, disorganized pacing, insufficient exposition, etc. <br>
+            - Bad directing. Unintelligible, confusing visual direction or incoherent editing. (This could arguably include directing which relies entirely on uninspired conventions.)<br>
+            - Bad sound direction. Poor timing, erratic audio mixing, unfit sound effects, jarring integration of music, etc.<br>
+            - Bad art direction. Dimensionless, under-detailed, or stylistically incongruous background art.<br>
+            - Poor theming. Themes are the decision of the storyteller, but the storyteller has to make sure their art reflects these values consistently & in a way the audience can reasonably be expected to infer through implications, subtleties, thematic dialogue or narration, etc.<br>
+        </p>
+        <p>
+            Something is subjectively bad if its flaws are a matter of your personal opinion. This includes but is not limited to the following:
+            <br>
+            - You think it’s boring.<br>
+            - You think the art style is ugly.<br>
+            - You think the premise is dumb.<br>
+            - You dislike the directing style.<br>
+            - You dislike the characters or disagree with the themes.<br>
+            - You simply dislike the genre.<br>
+            - The more technical aspects listed earlier may be called objectively bad or objectively good, but artistic, cinematic, & thematic choices of stylization or presentation, as well as every facet of genre preference, may not be.<br>
+        </p>
+        <p>
+            Something should be called a major factor if it pervades and can be cited consistently throughout the work.<br>
+            Something should be called a minor factor if it can only be cited by cherry-picking isolated incidents throughout the work.<br>
+        </p>
+    </div>
+    <div class="section-devider container">Scale</div>
+
+    <!-- scoring sect -->
+
+    <div class="container sect score-sect">
+        <h3 class="sect-title"><span class="lower-title">01.</span> Abomination</h3>
+        <p class="terms">
+            Disgusts my most basic sensibilities & usually embodies a larger issue like having superficial concepts in major social or moral problems.... A damning & downright offensive example of the worst anime culture has to offer.
+            <br>
+            If you say "oh who cares about morality in anime, just watch it for entertainment" then you and sadistic murderers have one thing in common: Your pleasure sickens me.
+        </p>
+        <p class="eg"><span>E.g.</span>Kaifuku Jutsushi no Yarinaoshi, Jigoku Shoujo, Bunny Girl Senpai,...</p>
+    </div>
+
+    <div class="container sect score-sect">
+        <h3 class="sect-title"><span class="lower-title">02.</span> Time-wasting</h3>
+        <p class="terms">
+            Is of such poor quality, it is impossible to take seriously or feel immersed in at all. A Two is objectively bad in a major way, & it is so shamelessly effortless & soulless, I cannot respect it on any level.
+        </p>
+        <p class="eg"><span>E.g.</span>Taboo Tattoo, Kenja no Mago,...</p>
+    </div>
+
+    <div class="container sect score-sect">
+        <h3 class="sect-title"><span class="lower-title">03.</span> Substandard</h3>
+        <p class="terms">
+            Much like a Two, is of such poor quality, it is impossible to take seriously or feel immersed in at all. However, while they are also objectively bad in a major way, a Three was actually made with some genuine thought or effort. It undoubtedly failed, but it actually tried on some level. If nothing else, I can at least respect it for that.
+        </p>
+        <p class="eg"><span>E.g.</span>Re:Creators, One Punch Man,...</p>
+    </div>
+
+    <div class="container sect score-sect">
+        <h3 class="sect-title"><span class="lower-title">04.</span> Plain</h3>
+        <p class="terms">
+            A Four, although usually is of a poor quality, it manages to set an atmosphere that makes me feel comfortable to watch. I'd say a Four is a well organized version of a Three.
+            <br>
+            Four is my <span>average score</span> for anime. It is my intersection between the “good” & the “bad.”
+        </p>
+        <p class="eg"><span>E.g.</span>Guilty Crown,...</p>
+    </div>
+
+    <div class="container sect score-sect">
+        <h3 class="sect-title"><span class="lower-title">05.</span> Above-average</h3>
+        <p class="terms">
+            Fives can usually be characterized in one of two ways: a striking, memorable work which had clear ambition, heart, & soul, but little technique or expertise to actually craft something decent or excuse its glaring flaws; or just a feel-good work, which has nothing to remember really, but the vibe is unforgettable anyway.
+        </p>
+        <p class="eg"><span>E.g.</span>Kino no Tabi, Akame ga Kill,...</p>
+    </div>
+
+    <div class="container sect score-sect">
+        <h3 class="sect-title"><span class="lower-title">06.</span> Worthy</h3>
+        <p class="terms">
+            A Six is comprehensively competent enough for me to treat with respect & view seriously. While a Six may have certain objectively bad elements of little significance, these elements are either minor enough to not consistently interrupt my immersion or so completely overshadowed by what makes the work both objectively & subjectively good.
+            <br>
+            A Six is great, & while it isn’t masterful enough to be totally immersive, a Six is my baseline of enjoyment & quality, the point at which I’m finally able to engage with the entertainment in front of me.
+            <br>
+            A Six is worthy of my wholehearted respect.
+        </p>
+        <p class="eg"><span>E.g.</span>Nichijou, Kokoro Connect,...</p>
+    </div>
+
+    <div class="container sect score-sect">
+        <h3 class="sect-title"><span class="lower-title">07.</span> Memorable</h3>
+        <p class="terms">
+            Anime I consider Honorable Mentions to My Favorites List.
+            <br>
+            A Seven is pretty much similar to a Six, the differences are that a Seven is usually unique, and has one or many masterful aspects that distinguish itself from the rest of the world.
+        </p>
+        <p class="eg"><span>E.g.</span>Hotarubi no Mori e, Lucky Star, Joshiraku,...</p>
+    </div>
+
+    <div class="container sect score-sect">
+        <h3 class="sect-title"><span class="lower-title">08.</span> Astonishing</h3>
+        <p class="terms">
+            A Eight is an extremely high-quality anime or manga which I was sincerely invested in, or which I simply must recognize as masterful. Due to minor subjective flaws, or perhaps even extremely minor objective flaws, they could not achieve the absolute immersion expected. A Eight is a work which can elicit enough genuine & instinctive emotional investment out of me.
+            <br>
+            <span style="font-weight: bold;">Eight is the maximum score that a pure-entertainment anime can reach</span>
+        </p>
+        <p class="eg"><span>E.g.</span>Clannad ~After Story~, Bakemonogatari, Death Note,...</p>
+    </div>
+
+    <div class="container sect score-sect">
+        <h3 class="sect-title"><span class="lower-title">Group:</span> 09s and 10s</h3>
+        <p>
+            Nine & Ten: Anime on My Favorites List. Without any objective or subjective flaws worthy of speech, I feel an uninterrupted immersion which allows me to truly care about the work in question, & this feeling is what defines My Favorites List. These are works of art I have in mind so often, they genuinely & meaningfully influence my real life. I can connect with & care for their characters as if they were people; I can internalize their themes as if they were life lessons; I can fully realize & appreciate their concepts & fantasies; & I can treat the stories they tell with the seriousness & gravitas I could afford to nonfiction. My Favorites List is spread across three rating levels so I can freely delineate between the very subtle & diverse ways in which these works resonate with me.
+        </p>
+    </div>
+
+    <div class="container sect score-sect">
+        <h3 class="sect-title"><span class="lower-title">09.</span> Top-notch</h3>
+        <p class="terms">
+            Just what I put in the 09s and 10s group. These anime are what I would call "perfect", distinguish from the rest of the world.
+        </p>
+        <p class="eg"><span>E.g.</span>Byousoku 5 Centimeter, Toki wo Kakeru Shoujo,...</p>
+    </div>
+
+    <div class="container sect score-sect">
+        <h3 class="sect-title"><span class="lower-title">10.</span> Masterpiece</h3>
+        <p class="terms">
+            What separates a Ten from a Nine is rather subjective. It's based on my own experience, life-style and perspectives. I can talk about these animes for hours discussing context, pointing out delicate details and interpreting subtexts. 
+            <br>
+            I confidently entrust these animes to represent myself.
+        </p>
+        <p class="eg"><span>E.g.</span>Shoujo Shuumatsu Ryokou, Kaze Tachinu,...</p>
+    </div>
+</div>
+</body>
+</html>
+<!-- The Single rating system by mikamikaela, heavily inspired by https://myanimelist.net/profile/SingleH -->

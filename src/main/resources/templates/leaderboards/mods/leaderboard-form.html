@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<!--suppress ThymeleafVariablesResolveInspection -->
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<!-- this use anime entry form stylesheet -->
+<link rel="stylesheet" href="/ss/page/lists/anime/form.css">
+
+<div class="form-container">
+    <div class="entry-form">
+        <!-- @id -->
+        <div class="field-container">
+            <p class="field-label">ID</p>
+            <input name="id" th:value="${ leaderboard.id }" readonly type="number" class="field field-disabled">
+        </div>
+
+        <!-- @name -->
+        <div class="field-container">
+            <p class="field-label">Name</p>
+            <input name="name" th:value="${ leaderboard.name }" class="field">
+        </div>
+
+        <!-- @priority -->
+        <div class="field-container">
+            <p class="field-label">Priority</p>
+            <input name="priority" th:value="${ leaderboard.priority }" type="number" class="field">
+        </div>
+
+        <!-- @description -->
+        <div class="field-container">
+            <p class="field-label">Description</p>
+            <input name="description" th:value="${ leaderboard.description }" class="field">
+        </div>
+
+        <!-- @ranked -->
+        <div class="field-container">
+            <p class="field-label">Ranked</p>
+            <select name="ranked" class="field">
+                <div th:if="${leaderboard.ranked}">
+                    <option value="true" selected="selected">Ranked</option>
+                    <option value="false">Unranked</option>
+                </div>
+                <div th:if="${!leaderboard.ranked}">
+                    <option value="true">Ranked</option>
+                    <option value="false" selected="selected">Unranked</option>
+                </div>
+            </select>
+        </div>
+
+        <!-- @category -->
+        <div class="field-container">
+            <p class="field-label">Category</p>
+            <select name="category" class="field">
+                <option value="anime">anime</option>
+            </select>
+        </div>
+    </div>
+</div>
+</html>

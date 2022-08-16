@@ -1,0 +1,65 @@
+
+body {
+    margin: 0;
+    padding: 2.5rem 0;
+    background-color: var(--background-color-primary);
+}
+
+header {
+    background-color: var(--background-color-sub);
+    padding: 1.5rem 2.5rem !important;
+}
+
+header .page-title {
+    color: var(--font-color-em);
+}
+
+header .page-title > span {
+    color: var(--font-color-primary);
+    font-weight: normal;
+    font-size: 2rem;
+}
+
+.sect {
+    background-color: var(--background-color-sub);
+    margin-top: 1rem;
+    padding: 1.5rem 2.5rem 0.5rem 2.5rem;
+}
+
+.sect * {
+    color: var(--font-color-primary);
+}
+
+.sect .sect-title {
+    color: var(--font-color-em);
+}
+
+.sect .sect-title .lower-title {
+    color: var(--font-color-bright);
+    font-size: 1.25rem;
+    font-weight: normal;
+}
+
+.eg {
+    font-style: italic;
+}
+
+.eg > span {
+    color: var(--font-color-alt-em);
+    font-style: normal;
+    padding-right: 1rem;
+}
+
+.terms .terms-reference {
+    color: var(--font-color-alt-em);
+}
+
+#all-sys ul li {
+    margin-bottom: 0.5rem;
+}
+
+#all-sys ul li span {
+    color: var(--font-color-em);
+    font-style: italic;
+    padding-right: 0.25rem;
+}

@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<!--suppress HtmlUnknownTarget, HtmlUnknownTag, ThymeleafVariablesResolveInspection -->
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="fragments/theme/theme_a/head :: head"></head>
+<head>
+    <meta charset="UTF-8">
+    <title>mikaDb</title>
+    <link rel="stylesheet" href="/ss/pallete/pearl.css">
+    <link rel="stylesheet" href="/ss/page/index.css">
+
+    <link rel="stylesheet" href="/chart/charts.css/dist/charts.css">
+    <link rel="stylesheet" href="/ss/page/lists/stats/select_box.css">
+    <link rel="stylesheet" href="/ss/page/lists/stats/chart.css">
+    <link rel="stylesheet" href="/ss/page/lists/stats/field_statistics.css">
+    <link rel="stylesheet" href="/ss/page/lists/stats/score_distribution.css">
+    <link rel="stylesheet" href="/ss/page/lists/stats/linechart_statistics.css">
+</head>
+<script th:replace="fragments/theme/theme_a/script"></script>
+<!-- overflow_chart.js MUST be loaded before by_year_stats.js -->
+<!-- it must scroll the charts before they are hiden -->
+<script src="/js/page/homepage/overflow_chart.js"></script>
+<script src="/js/page/homepage/by_year_stats.js"></script>
+
+<body>
+<div id="main-container" class="container">
+    <div th:replace="fragments/theme/theme_a/header"></div>
+
+    <!-- overall statistics -->
+    <div class="section-devider">Overall</div>
+    <div class="stat-field-container">
+
+        <!-- -->
+        <div class="stat-field">
+            <svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="#888888" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
+
+            <div class="info-wrapper">
+                <span class="stat" th:text="${ overallStat.getCompletedTitlesCount() }"></span>
+                <span class="category">Titles Completed</span>
+            </div>
+        </div>
+
+        <!-- -->
+        <div class="stat-field">
+            <svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="#888888" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"></path></svg>
+
+            <div class="info-wrapper">
+                <span class="stat" th:text="${ overallStat.getFranchisesCount() }"></span>
+                <span class="category">Franchises Count</span>
+            </div>
+        </div>
+
+        <!-- -->
+        <div class="stat-field">
+            <svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="#888888" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
+
+            <div class="info-wrapper">
+                <span class="stat" th:text="${ overallStat.getEpisodesWatched() }"></span>
+                <span class="category">Episodes Watched</span>
+            </div>
+        </div>
+
+        <!-- -->
+        <div class="stat-field">
+            <svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="#888888" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21.5 2v6h-6M21.34 15.57a10 10 0 1 1-.57-8.38"/></svg>
+
+            <div class="info-wrapper">
+                <span class="stat" th:text="${ overallStat.getEpisodesRewatched() }"></span>
+                <span class="category">Episodes Rewatched</span>
+            </div>
+        </div>
+
+        <!-- -->
+        <div class="stat-field">
+            <svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="#888888" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+
+            <div class="info-wrapper">
+                <span class="stat" th:text="${ overallStat.getHoursWatched() }"></span>
+                <span class="category">Hours Watched</span>
+            </div>
+        </div>
+
+        <!-- -->
+        <div class="stat-field">
+            <svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="#888888" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"></path><line x1="7" y1="7" x2="7.01" y2="7"></line></svg>
+
+            <div class="info-wrapper">
+                <span class="stat" th:text="${ overallStat.getRatedCount() }"></span>
+                <span class="category">Rated Entries</span>
+            </div>
+        </div>
+
+        <!-- -->
+        <div class="stat-field">
+            <svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="#888888" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="5" x2="5" y2="19"></line><circle cx="6.5" cy="6.5" r="2.5"></circle><circle cx="17.5" cy="17.5" r="2.5"></circle></svg>
+
+            <div class="info-wrapper">
+                <span class="stat" th:text="${ overallStat.getMeanScore() }"></span>
+                <span class="category">Mean Score</span>
+            </div>
+        </div>
+
+        <!-- -->
+        <div class="stat-field">
+            <svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="#888888" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="20" x2="18" y2="10"></line><line x1="12" y1="20" x2="12" y2="4"></line><line x1="6" y1="20" x2="6" y2="14"></line></svg>
+
+            <div class="info-wrapper">
+                <span class="stat" th:text="${ overallStat.getBalancedMeanScore() }"></span>
+                <span class="category">Balanced Score</span>
+            </div>
+        </div>
+    </div>
+    <div class="display-select-box">
+        <p>Displaying statistics of</p>
+        <select>
+            <option>Anime List</option>
+        </select>
+    </div>
+
+    <!-- score distribution -->
+    <div class="section-devider">Score Distribution</div>
+    <div class="chart-view">
+        <h4 class="chart-caption">Rating Distribution</h4>
+        <table class="score-distribution-view charts-css column show-labels data-spacing-20">
+            <tbody>
+            <!--/*@thymesVar id="scoreDists" type="java.util.List<java.lang.Integer>"*/-->
+            <!-- we want to display the score in reverse order -->
+            <div th:with="distLen = ${ scoreDistStat.getDists().size() }">
+                <div th:each="e, state: ${ scoreDistStat.getDists() }">
+                    <tr>
+                        <th scope="row" th:text="${ ratingsShort[distLen - 1 - state.index] }"></th>
+                        <td th:style="'--size: ' + ${ (0.0 + e) / (scoreDistStat.getPeak() * 1.2) } + ';'">
+                            <div class="info-box">
+                                <div class="info-field">
+                                    <span class="label">Count: </span>
+                                    <span class="val" th:text="${ e }"></span>
+                                </div>
+                                <div class="info-field">
+                                    <span class="label">Perc.: </span>
+                                    <span class="val perc" th:text="${ scoreDistStat.getPercentage().get(state.index) }"></span>
+                                </div>
+                                <div class="info-field">
+                                    <span class="label">Top: </span>
+                                    <span class="val perc" th:text="${ scoreDistStat.getTopPercentage.get(state.index) }"></span>
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                </div>
+            </div>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- by year statistic -->
+    <div class="section-devider">Statistics by Year</div>
+
+    <div class="display-select-box">
+        <p>of</p>
+        <select id="by-year-statistic-select">
+            <option value="0">Complete Date</option>
+            <option value="1">Aired Date</option>
+        </select>
+    </div>
+
+    <div id="by-year-statistic">
+        <!-- completed date -->
+        <div class="sect sect-0 chart-height-12">
+            <!-- titles watched -->
+            <div class="chart-view">
+                <h4 class="chart-caption">Titles Watched</h4>
+                <div th:with="dummy = ${ lineChartCounter.reset() }"></div>
+                <div th:with="hashmap=${ cmplDateStat.getTitlesWatched() }, peak=${ cmplDateStat.getTitlesPeak() * 1.4 }">
+                    <div th:replace="fragments/page/homepage/year_linechart"></div>
+                </div>
+            </div>
+
+            <!-- mean score -->
+            <div class="chart-view">
+                <h4 class="chart-caption">Mean Score</h4>
+                <div th:with="dummy = ${ lineChartCounter.reset() }"></div>
+                <div th:with="hashmap=${ cmplDateStat.getMeanScore() }, peak=${ cmplDateStat.getMeanPeak() * 1.4 }">
+                    <div th:replace="fragments/page/homepage/year_linechart"></div>
+                </div>
+            </div>
+
+            <!-- high rate percentage -->
+            <div class="chart-view">
+                <h4 class="chart-caption">Decorated Percentage</h4>
+                <div th:with="dummy = ${ lineChartCounter.reset() }"></div>
+                <div th:with="hashmap=${ cmplDateStat.getHighRatedPercentage() }, peak=${ cmplDateStat.getHighRatedPeak() * 1.4 }">
+                    <div th:replace="fragments/page/homepage/year_linechart"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- aired -->
+        <div class="sect sect-1">
+            <!-- titles watched -->
+            <div class="chart-view">
+                <h4 class="chart-caption">Titles Watched</h4>
+                <div th:with="dummy = ${ lineChartCounter.reset() }"></div>
+                <div th:with="hashmap=${ airedStat.getTitlesWatched() }, peak=${ airedStat.getTitlesPeak() * 1.4 }">
+                    <div th:replace="fragments/page/homepage/year_linechart"></div>
+                </div>
+            </div>
+
+            <!-- mean score -->
+            <div class="chart-view">
+                <h4 class="chart-caption">Mean Score</h4>
+                <div th:with="dummy = ${ lineChartCounter.reset() }"></div>
+                <div th:with="hashmap=${ airedStat.getMeanScore() }, peak=${ airedStat.getMeanPeak() * 1.4 }">
+                    <div th:replace="fragments/page/homepage/year_linechart"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

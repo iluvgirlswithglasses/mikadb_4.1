@@ -1,0 +1,31 @@
+
+.stat-field-container {
+    display: flex;
+    flex-flow: row wrap;
+}
+
+.stat-field-container .stat-field {
+    width: 25%;
+
+    padding: 1rem 0.25rem;
+    margin-bottom: 1rem;
+
+    display: flex;
+    flex-direction: row;
+}
+
+.stat-field-container .stat-field .info-wrapper {
+    display: flex;
+    flex-flow: column;
+    margin-left: 1.25rem;
+}
+
+.stat-field-container .stat-field .info-wrapper span {
+    display: block;
+}
+
+.stat-field-container .stat-field .info-wrapper .stat {
+    color: var(--font-color-em);
+    font-size: 2rem;
+    font-weight: bold;
+}

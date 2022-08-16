@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<!--suppress ALL -->
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<div class="line-chart-overflow">
+    <table class="line-chart-statistic charts-css line show-labels">
+        <tbody>
+        <!--/*@thymesVar id="hashmap" type="java.util.LinkedHashMap<Integer, Integer>"*/-->
+        <div th:each="e: ${ hashmap }">
+            <tr style="min-width: 6rem">
+                <!--/*@thymesVar id="lineChartCounter" type="konasoft.mikadb.model.homepage.LineChartCounterModel"*/-->
+                <th scope="row" th:text="${ dateDecoder.get(e.key) }"></th>
+                <td th:style="'--start: ' + ${ lineChartCounter.getPreviousSize() } + '; '
+                            + '--size: ' + ${ lineChartCounter.devide(e.value, peak) }">
+                    <span class="val" th:text="${ e.value }"></span>
+                    <span class="point"></span>
+                </td>
+            </tr>
+        </div>
+        </tbody>
+    </table>
+</div>
+</html>

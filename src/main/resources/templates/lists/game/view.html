@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<!--suppress HtmlUnknownTarget -->
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="fragments/theme/theme_a/head :: head"></head>
+<head>
+    <meta charset="UTF-8">
+    <!--/*@thymesVar id="entry" type="konasoft.mikadb.model.lists.GameModel"*/-->
+    <title th:text="${ entry.title }"></title>
+    <link rel="stylesheet" href="/ss/pallete/pearl.css">
+    <link rel="stylesheet" href="/ss/utils/button.css">
+    <link rel="stylesheet" href="/ss/page/lists/anime/entry_action_bar.css">
+</head>
+<script th:replace="fragments/theme/theme_a/script"></script>
+
+<body>
+<div id="main-container" class="container" style="background-color: var(--background-color-primary);">
+    <div th:replace="fragments/theme/theme_a/header"></div>
+    <!--/*@thymesVar id="entry" type="konasoft.mikadb.model.lists.GameModel"*/-->
+    <div class="section-devider" id="main-devider" th:text="${ entry.title }"></div>
+
+    <div>
+        <div id="entry-action-bar" style="padding-bottom: 2rem;">
+            <div class="entry-profile-pic">
+                <img th:src="${ entry.getProfilePic() }">
+            </div>
+            <a class="action-button fancy-button" th:href="'/lists/game/edit/' + ${ entry.id }">Edit</a>
+            <a class="action-button fancy-button" th:href="'/lists/game'">Return to List</a>
+        </div>
+        <div th:replace="lists/game/entry-view"></div>
+    </div>
+</div>
+</body>
+
+</html>

@@ -1,0 +1,22 @@
+
+.display-select-box {
+    display: flex;
+    align-items: center;
+}
+
+.display-select-box p {
+    margin: 0;
+}
+
+.display-select-box select {
+    margin-left: 1.25rem;
+    padding: 0.5rem 1rem;
+
+    color: var(--font-color-em);
+    background-color: var(--background-color-sub);
+    border: solid 1px var(--font-color-muted);
+}
+
+.display-select-box select option {
+    background-color: var(--background-color-sub);
+}

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<!--suppress HtmlUnknownTarget -->
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="fragments/theme/theme_a/head :: head"></head>
+<head>
+    <meta charset="UTF-8">
+    <title th:text="${ leaderboard.name }"></title>
+    <link rel="stylesheet" href="/ss/pallete/spring.css">
+    <link rel="stylesheet" href="/ss/page/leaderboards/list.css">
+    <link rel="stylesheet" href="/ss/page/leaderboards/entry.css">
+</head>
+<script th:replace="fragments/theme/theme_a/script"></script>
+
+<body>
+<div id="main-container" class="container">
+    <div th:replace="fragments/theme/theme_a/header"></div>
+    <!-- the list -->
+    <div id="entries-list"
+         th:class="'ranked-' + ${ leaderboard.ranked }">
+        <!--/*@thymesVar id="entry" type="konasoft.mikadb.model.leaderboards.LeaderboardEntry<konasoft.mikadb.model.leaderboards.lists.LeaderboardEntryModel>"*/-->
+        <div th:each="entry: ${ entries }"
+             class="entry-container"
+             th:onclick="|window.open('@{/leaderboards/entry/view/}${entry.id}', '_blank')|">
+            <div th:class="'entry entry-rank-' + ${ entry.rank }">
+                <img class="entry-profile-pic"
+                     th:src="${ entry.model.getProfilePic() }">
+
+                <div th:if="${ leaderboard.ranked }" class="info-sect info-top">
+                    <span class="entry-info entry-info-rank"
+                          th:text="${ entry.rank }"></span>
+                </div>
+
+                <div class="info-sect info-bot">
+                    <span class="entry-info entry-info-title"
+                          th:text="${ entry.model.title }"></span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

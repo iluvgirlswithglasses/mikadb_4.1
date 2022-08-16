@@ -1,0 +1,27 @@
+
+.fancy-button {
+    display: block;
+
+    text-align: center;
+    padding: 0.5rem 2rem;
+
+    color: var(--font-color-em);
+    background: none;
+
+    border: solid 1px var(--font-color-em);
+    border-radius: 4rem;
+
+    transition-property: color, background-color;
+    transition-duration: 400ms;
+}
+
+.fancy-button:hover {
+    color: var(--font-color-bright);
+    background-color: var(--font-color-em);
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.fancy-button:focus {
+    outline: none;
+}

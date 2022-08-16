@@ -1,0 +1,74 @@
+
+.fancy-list .list-item {
+    display: block;
+    position: relative;
+    width: 100%;
+    height: 200px;
+    overflow: hidden;
+    box-shadow: 1.5rem 1rem rgba(16, 16, 16, 0.6);
+    margin-bottom: 2.5rem;
+    cursor: pointer;
+}
+
+.fancy-list .list-item img {
+    display: block;
+    position: absolute;
+    z-index: 1;
+    transition: transform 800ms;
+}
+
+.fancy-list .list-item:hover img {
+    transform: translateX(8rem);
+}
+
+.fancy-list .list-item .text-bg {
+    display: block;
+    position: absolute;
+    z-index: 2;
+    width: 0;
+    height: 100%;
+    background-color: var(--font-color-primary);
+    border-radius: 0 0 10rem 0;
+    transition-property: width;
+    transition-duration: 800ms;
+}
+
+.fancy-list .list-item:hover .text-bg {
+    width: 28rem;
+}
+
+.fancy-list .list-item .text {
+    display: block;
+    position: absolute;
+    font-size: 1.25rem;
+    color: var(--font-color-bright);
+    z-index: 3;
+    margin-left: 3.2rem;
+    height: 100%;
+}
+
+.fancy-list .list-item .text .list-item-display-name {
+    font-family: Montserrat;
+    font-weight: bold;
+    font-size: 2.5rem;
+    color: #e2247f;
+    margin-top: 2.5rem;
+    margin-bottom: 0;
+}
+
+.fancy-list .list-item .text .list-item-lord {
+    font-family: "Calibri Light";
+    font-style: italic;
+    transition: color 800ms;
+}
+
+.fancy-list .list-item .text .list-item-sub-lord {
+    font-family: Calibri;
+    margin-top: 1rem;
+    transition: color 800ms;
+}
+
+.fancy-list .list-item:hover .text .list-item-lord,
+.fancy-list .list-item:hover .text .list-item-sub-lord {
+    color: black;
+}

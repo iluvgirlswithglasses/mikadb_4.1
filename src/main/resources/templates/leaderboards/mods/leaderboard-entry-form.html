@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<!--suppress ThymeleafVariablesResolveInspection -->
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<!-- this use anime entry form stylesheet -->
+<link rel="stylesheet" href="/ss/page/lists/anime/form.css">
+
+<div class="form-container">
+    <div class="entry-form">
+        <!-- @id -->
+        <div class="field-container">
+            <p class="field-label">ID</p>
+            <input name="id" th:value="${ entry.id }" readonly type="number" class="field field-disabled">
+        </div>
+
+        <!-- link -->
+        <div class="field-container">
+            <p class="field-label">Link (auto-gen)</p>
+            <a th:href="${ entry.model.getLink() }" th:text="${ entry.model.getLink() }" class="field"></a>
+        </div>
+
+        <!-- @entry-table -->
+        <div class="field-container">
+            <p class="field-label">Domestic List</p>
+            <select name="entry-table" class="field">
+                <option value="anime" selected="selected">anime</option>
+            </select>
+        </div>
+
+        <!-- @entry-id -->
+        <div class="field-container">
+            <p class="field-label">Domestic ID</p>
+            <input name="entry-id" th:value="${ entry.model.entryId }" type="number" class="field">
+        </div>
+
+        <!-- @leaderboard-id -->
+        <div class="field-container">
+            <p class="field-label">Leaderboard</p>
+            <select name="leaderboard-id" class="field">
+                <div th:each="leaderboard: ${ leaderboards }">
+                    <div th:switch="${ leaderboard.id }">
+                        <option th:case="${ entry.leaderboardId }" selected="selected"
+                                th:value="${ leaderboard.id }" th:text="${ leaderboard.category + ' / ' + leaderboard.name }"></option>
+                        <option th:case="*"
+                                th:value="${ leaderboard.id }" th:text="${ leaderboard.category + ' / ' + leaderboard.name }"></option>
+                    </div>
+                </div>
+            </select>
+        </div>
+
+        <!-- @rank -->
+        <div class="field-container">
+            <p class="field-label">Rank</p>
+            <input name="rank" th:value="${ entry.rank }" type="number" class="field">
+        </div>
+
+        <!-- @description -->
+        <div class="field-container">
+            <p class="field-label">Description</p>
+            <input name="description" th:value="${ entry.description }" class="field">
+        </div>
+    </div>
+</div>
+</html>

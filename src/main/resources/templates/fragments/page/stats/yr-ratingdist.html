@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<!--suppress ALL -->
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+    <!-- summary -->
+    <h4 style="text-align: right; margin-right: 2.5rem;">Summary</h4>
+    <div class="stat-field-container">
+        <!-- -->
+        <div class="stat-field">
+            <svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="#888888" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
+
+            <div class="info-wrapper">
+                <span class="stat" th:text="${ yrstat.getTitleCompleted() }"></span>
+                <span class="category">Titles Completed</span>
+            </div>
+        </div>
+
+        <!-- -->
+        <div class="stat-field">
+            <svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="#888888" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="5" x2="5" y2="19"></line><circle cx="6.5" cy="6.5" r="2.5"></circle><circle cx="17.5" cy="17.5" r="2.5"></circle></svg>
+
+            <div class="info-wrapper">
+                <span class="stat" th:text="${ yrstat.getMeanRating() }"></span>
+                <span class="category">Mean Score</span>
+            </div>
+        </div>
+
+        <!-- -->
+        <div class="stat-field">
+            <svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="#888888" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="20" x2="18" y2="10"></line><line x1="12" y1="20" x2="12" y2="4"></line><line x1="6" y1="20" x2="6" y2="14"></line></svg>
+
+            <div class="info-wrapper">
+                <span class="stat" th:text="${ yrstat.getBalancedMeanRating() }"></span>
+                <span class="category">Balanced Score</span>
+            </div>
+        </div>
+
+        <!-- -->
+        <div class="stat-field">
+            <svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="#888888" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>
+
+            <div class="info-wrapper">
+                <span class="stat" th:text="${ yrstat.getEnjoyment() }"></span>
+                <span class="category">Enjoyment</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- rating dist chart -->
+    <div class="stat-view chart-view">
+        <h4 class="chart-caption">Rating Distribution</h4>
+        <table class="score-distribution-view charts-css column show-labels data-spacing-20"
+               th:with="len = ${ yrstat.getRatingDist().length }">
+            <tr th:each="e, state: ${ yrstat.getRatingDist() }" th:with="i = ${ len - 1 - state.index }">
+                <th scope="row" th:text="${ ratingDecoder.RATING_SHORT[i] }"></th>
+                <td th:style="'--size:' + ${ (0.0 + yrstat.getRatingDist()[i]) / (yrstat.getRatingDistPeak() * 1.2) } + ';'">
+                    <div class="info-box">
+                        <div class="info-field">
+                            <span class="label">Count: </span>
+                            <span class="val" th:text="${ yrstat.getRatingDist()[i] }"></span>
+                        </div>
+                        <div class="info-field">
+                            <span class="label">Perc.: </span>
+                            <span class="val perc" th:text="${ yrstat.getRatingDistPercentage()[i] }"></span>
+                        </div>
+                        <div class="info-field">
+                            <span class="label">Top: </span>
+                            <span class="val perc" th:text="${ yrstat.getRatingDistTop()[i] }"></span>
+                        </div>
+                    </div>
+                </td>
+            </tr>
+        </table>
+    </div>
+</html>

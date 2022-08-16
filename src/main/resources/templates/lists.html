@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<!--suppress HtmlUnknownTarget -->
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="fragments/theme/theme_a/head :: head"></head>
+<head>
+    <meta charset="UTF-8">
+    <title>mikaDb Lists</title>
+    <link rel="stylesheet" href="/ss/pallete/spring.css">
+    <link rel="stylesheet" href="/ss/utils/fancy_list.css">
+</head>
+<script th:replace="fragments/theme/theme_a/script"></script>
+
+<body>
+<div id="main-container" class="container">
+    <div th:replace="fragments/theme/theme_a/header"></div>
+    <div class="section-devider"></div>
+
+    <div class="fancy-list">
+        <div class="list-item-outter" th:each="child: ${ childPages }">
+            <!-- don't mind stupid intellij -->
+            <div class="list-item" th:onclick="|window.location.href='@{${child.stringPath}}'|">
+                <img th:src="'/webcontent/lists/thumb/' + ${ child.name } + '.png'" alt="child-list-thumb">
+                <div class="text-bg"></div>
+                <div class="text">
+                    <h4 class="list-item-display-name" th:text="${ child.displayName }"></h4>
+                    <em class="list-item-lord" th:text="${ child.lord }"></em>
+                    <p class="list-item-sub-lord" th:text="${ child.subLord }"></p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

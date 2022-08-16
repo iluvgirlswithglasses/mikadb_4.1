@@ -1,0 +1,11 @@
+
+mal-api
+	py/mal-anime-entry/run.py
+	py/MALAnimeEntry
+
+back-end:
+	model/lists/AnimeModel
+	sqlite/dao/lists/AnimeDAO
+
+front-end:
+	templates/lists/anime

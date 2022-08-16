@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<!--suppress JSUnresolvedVariable -->
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<script src="/js/jquery.js"></script>
+<script th:inline="javascript">
+    let version = /*[[${ version }]]*/ 'error',
+        page = /*[[${ page }]]*/ {};
+
+    $(document).ready(() => {
+        $('.version').text(`vers. ${version}`);
+        $('.page-display-name').text(page.displayName);
+        $(`.main-navbar .nav-${page.majorName}`).addClass('active');
+    });
+</script>
+</html>

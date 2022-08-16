@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="fragments/theme/theme_a/head :: head"></head>
+<head>
+    <meta charset="UTF-8">
+    <title>Chito Rating System</title>
+    <link rel="stylesheet" href="/ss/pallete/spring.css">
+    <link rel="stylesheet" href="/ss/page/gallery/chitoyuuki-sys.css">
+</head>
+<script th:replace="fragments/theme/theme_a/script"></script>
+
+<body>
+<div id="main-container" class="container">
+    <div th:replace="fragments/theme/theme_a/header"></div>
+
+    <div class="section-devider container">About</div>
+    <div class="container sect about-sect">
+        <p>
+            ChitoYuuki rating system implements Konata sys criteria into base-10<br>
+            Original criteria: <span style="color: var(--font-color-alt-em); font-style: italic;"
+        >Characters, Relationships, Creativity, Progress, Conveyance, Story, Morals, Cinematography, Sound and Music
+            </span>
+        </p>
+        <p>
+            Update: This system didn't age well, did it?
+            After visiting mal/SingleH profile, I realized that I doesn't care about MAL rating anymore, yet my rating system still based on how I rate when I did.<br>
+            Gotta change that soon. (Soon means 2-3 months to me rn lol)
+        </p>
+    </div>
+    <div id="all-sys" class="container sect">
+        <p>
+            Most of the older lists are still kept. Thus, we can rediscover and collect some data.<br>
+            All rating systems ever created:
+        <ul style="list-style-type: none;">
+            <li><span>Mika AnimeList 1 (Excel) - base 6:</span> Scores are altered by highlighted background or font color.</li>
+
+            <li><span>Mika AnimeList 2 (Excel) - base 15:</span> Introduces criteria, categories, tiers, and leaderboards.</li>
+
+            <li><span>AnimeList 3 - base 10:</span> This is actually MAL, and also is the first time the traditional base-10 is implemented.</li>
+
+            <li><span>Mika AnimeList 4 (Excel) - multi-bases:</span> MAL has limits, indeed. So we came back with the "creative platform". Then the old base-15 returned, and a new base-10 system <span>"Mika MAL Standard"</span> was made, running along with the old version of itself. In addition to that, each anime would be rated by both existing scales.</li>
+
+            <li><span>After the first mikaDb failure:</span> Switch completely to MAL (again). Since then, even if a mikaDb version was available, all entries anywhere would be rated under one rating system only.</li>
+
+            <li>Without the base-15, the <span>base-10 Mika MAL Standard</span> changed: It switched to the <span>"gate-keeper"</span> scoring method, which means if an anime provided the same "enjoyment level" as another, it would get the same score as that other one. Nevertheless, it became the most unstable rating system ever created. Within one year of service, the scale <span>reformed twice</span>, and was renamed to <span>Lelouch</span>. An inevitable replacement could clearly be foreseen.</li>
+
+            <li>While the plan for <span>mikaDb 4</span> was blooming, <span>Konata rating system</span> was developed. Soon after that, <span>ChitoYuuki</span> appeared, willing to merge the base-24 Konata into base-10. At the time I am writing this, <span>ChitoYuuki</span> has perfectly been intergrated into any database, as well as becoming the easiest scoring method ever come to existence.</li>
+        </ul>
+        </p>
+    </div>
+    <div class="section-devider container">Scale</div>
+
+    <!-- scoring sect -->
+
+    <div class="container sect score-sect">
+        <h3 class="sect-title"><span class="lower-title">10.</span> Masterpiece</h3>
+        <p class="terms">
+            Entries that are unique, outstandingly creative, extraodinary, comprehensive and reflective.<br>
+            Entries that either blow me away, or drown me with thoughts.<br>
+            Entries that meet all the terms except the first one of <span class="terms-reference">~09: Top-notch~</span>.
+        </p>
+        <p class="eg"><span>E.g.</span>Shoujo Shuumatsu Ryokou, Monogatari Series,...</p>
+    </div>
+
+    <div class="container sect score-sect">
+        <h3 class="sect-title"><span class="lower-title">09.</span> Top-notch</h3>
+        <p class="terms">
+            Those that are unique, creative, with astonishing characters and stupendous progress.<br>
+            Those that widen my knowledge, raise my art perception, or open my heart somewhat.<br>
+            Those that share genuine and sincere lessons/experiences.<br>
+            Cinematography and sound design are considered as major factors.
+        </p>
+        <p class="eg"><span>E.g.</span>Lucky Star, Joshiraku, Great Pretender, Hagane no Renkinjutsushi,...</p>
+    </div>
+
+    <div class="container sect score-sect">
+        <h3 class="sect-title"><span class="lower-title">08.</span> Astonishing</h3>
+        <p class="terms">
+            Are original and having considerable creativity.<br>
+            Are captivating and charming. Definately would bring a one-of-a-kind experience.<br>
+            Having strong characterization.<br>
+            Having fascinating progression and conveyance.<br>
+            Having strong arguments and/or perspectives.
+        </p>
+        <p class="eg"><span>E.g.</span>Clannad, Byousoku 5 Centimeter, Kaguya-sama wa Kokurasetai, Ookami to Koushinryou,...</p>
+    </div>
+
+    <div class="container sect score-sect">
+        <h3 class="sect-title"><span class="lower-title">07.</span> Memorable</h3>
+        <p class="terms">
+            Are creative and original.<br>
+            Having interesting characters and relationships.<br>
+            Having progress or conveyance that bring surprises and break conventions.<br>
+            Maturely written.
+        </p>
+        <p class="eg"><span>E.g.</span>Goblin Slayer, Violet Evergarden, Evangelion,...</p>
+    </div>
+
+    <div class="container sect score-sect">
+        <h3 class="sect-title"><span class="lower-title">06.</span> Worthy</h3>
+        <p class="terms">
+            Those that deserve respects.<br>
+            Having some creative and original aspects.<br>
+            Well developed characters and relationships.<br>
+            Having engaging progress and interesting conveyance.<br>
+            Responsibly written.
+        </p>
+        <p class="eg"><span>E.g.</span>Senryuu Shoujo, Kino no Tabi, Yagate Kimi ni Naru, Yosuga no Sora,...</p>
+    </div>
+
+    <div class="container sect score-sect">
+        <h3 class="sect-title"><span class="lower-title">05.</span> Above-average</h3>
+        <p class="terms">
+            Shows with some original aspects.<br>
+            Having developed characters and relationships.<br>
+            Well progressed and conveyed.
+        </p>
+        <p class="eg"><span>E.g.</span>Sakurasou, Soul Eater, Akame ga Kill, Meiji Tokyo Renka,...</p>
+    </div>
+
+    <div class="container sect score-sect">
+        <h3 class="sect-title"><span class="lower-title">04.</span> Plain</h3>
+        <p class="terms">
+            Not creative.<br>
+            Inefficient developments.<br>
+            Generic characters.<br>
+            Common progress.
+        </p>
+        <p class="eg"><span>E.g.</span>Sewayaki Kitsune no Senko-san, Karakai Jouzu no Takagi-san, Guilty Crown,...</p>
+    </div>
+
+    <div class="container sect score-sect">
+        <h3 class="sect-title"><span class="lower-title">03.</span> Substandard</h3>
+        <p class="terms">
+            Neither creative nor original.<br>
+            May have passed the first term, but can not progress.<br>
+            Having immature or superficial concepts in science/psychology/ideals/philosophy/society/politics/etc... that play a key role in the show<br>
+            Mediocre characters.<br>
+            Inefficient developments.
+        </p>
+        <p class="eg"><span>E.g.</span>To Aru Kagaku no Railgun, Re:Creators, One Punch Man, Sword Art Online,...</p>
+    </div>
+
+    <div class="container sect score-sect">
+        <h3 class="sect-title"><span class="lower-title">02.</span> Time-wasting</h3>
+        <p class="terms">
+            Shows that meet <span class="terms-reference">~03: Substandard~</span> terms.<br>
+            Terrible shows that I should have better spent time doing anything else.
+        </p>
+        <p class="eg"><span>E.g.</span>Kimetsu no Yaiba, Taboo Tattoo, Kenja no Mago, One Piece,...</p>
+    </div>
+
+    <div class="container sect score-sect">
+        <h3 class="sect-title"><span class="lower-title">01.</span> Abomination</h3>
+        <p class="terms">
+            Shows that meet <span class="terms-reference">~02: Time-wasting~</span> terms.<br>
+            Having major immature offensive ideals and/or making major erroneous assumptions towards a person/group of people/community/society/etc... As well as having morality corrupted.
+        </p>
+        <p class="eg"><span>E.g.</span>Kaifuku Jutsushi no Yarinaoshi, Bunny Girl Senpai,...</p>
+    </div>
+</div>
+</body>
+</html>
+<!-- ChitoYuuki rating system by mikamikaela -->

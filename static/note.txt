@@ -1,0 +1,2 @@
+putting the static folder here make the code compile significantly faster
+cuz it gonna copy the whole resources in src/ and it's a enormous waste of time

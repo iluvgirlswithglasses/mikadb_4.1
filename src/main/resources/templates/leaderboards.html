@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<!--suppress HtmlUnknownTarget -->
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="fragments/theme/theme_a/head :: head"></head>
+<head>
+    <meta charset="UTF-8">
+    <title>mikaDb Leaderboards</title>
+    <link rel="stylesheet" href="/ss/pallete/spring.css">
+    <link rel="stylesheet" href="/ss/utils/fancy_list.css">
+</head>
+<script th:replace="fragments/theme/theme_a/script"></script>
+
+<body>
+<div id="main-container" class="container">
+    <div th:replace="fragments/theme/theme_a/header"></div>
+
+    <div th:each="pair: ${ leaderboards }">
+        <!-- title of group -->
+        <div class="section-devider" th:text="${ pair.first }"></div>
+
+        <!-- group -->
+        <div class="fancy-list">
+            <div class="list-item-outter" th:each="leaderboard: ${ pair.second }">
+                <!-- don't mind stupid intellij -->
+                <div class="list-item" th:onclick="|window.location.href='/leaderboards/${leaderboard.id}'|">
+                    <img th:src="${ leaderboard.getThumbnail() }" alt="child-list-thumb">
+                    <div class="text-bg"></div>
+                    <div class="text">
+                        <h4 class="list-item-display-name" th:text="${ leaderboard.name }"></h4>
+                        <em class="list-item-lord" th:text="${ leaderboard.description }"></em>
+                        <p class="list-item-sub-lord" th:text="${ leaderboard.getSubLord() }"></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

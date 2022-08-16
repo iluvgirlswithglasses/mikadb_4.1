@@ -1,0 +1,106 @@
+
+:root {
+    --dark-0:   #191e24;    /* 025 030 036 */
+    --dark-1:   #0d1215;    /* 013 018 021 */
+    --white-0:  #d8dee9;    /* 216 222 233 */
+    --white-1:  #96acb9;    /* 150 172 185 */
+    --grey-0:   #888888;    /* 136 136 136 */
+
+    --red-0:    #ec6056;
+    --orange-0: #f97b57;
+    --yellow-0: #f9ae57;
+    --pink-0:   #c695c6;
+    --blue-0:   #6699cc;
+    --cyan-0:   #60b4b4;
+    --green-0:  #8ac794;
+}
+
+.sect {
+    background-color: var(--background-color-sub);
+    margin-top: 1rem;
+    padding: 1.5rem 2.5rem 0.5rem 2.5rem;
+}
+
+.sect * {
+    color: var(--font-color-primary);
+}
+
+.eg {
+    font-style: italic;
+}
+
+.eg > span {
+    color: var(--font-color-alt-em);
+    font-style: normal;
+    padding-right: 1rem;
+}
+
+/**
+ * 
+ * */
+.year-container {
+    padding: 0.75rem 0 0.5rem 0;
+}
+
+.year {
+    padding-left: 2.5rem;
+    padding-right: 2.5rem;
+}
+
+.year h2 {
+    font-size: 3rem;
+    color: var(--font-color-em);
+    font-weight: bold;
+}
+
+.year p {
+    font-size: 1.25rem;
+}
+
+.entry-section {
+    padding-left: 2.5rem;
+    padding-right: 2.5rem;
+    font-size: 1.25rem;
+
+    background-color: var(--dark-1);
+    padding-top: 1.25rem;
+    padding-bottom: 1.25rem;
+    margin-top: 1rem;
+    border-radius: 2rem;
+}
+
+.entry-section a {
+    font-size: 2rem;
+    color: var(--blue-0);
+    font-weight: bold;
+    font-style: italic;
+
+    transition: color 400ms;
+}
+
+.entry-section ul {
+    margin: 0;
+}
+
+/**
+ * những cái này sẽ được fix thành nền màu chữ trắng sớm
+ * */
+.rank {
+    font-weight: bold;
+}
+
+.platinum {
+    color: var(--cyan-0);
+}
+
+.platinum::after {
+    content: "Platinum";
+}
+
+.gold {
+    color: var(--yellow-0);
+}
+
+.gold::after {
+    content: "Gold";
+}

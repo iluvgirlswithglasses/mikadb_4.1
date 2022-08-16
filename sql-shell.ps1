@@ -1,0 +1,1 @@
+java -classpath "lib/sqlite-jdbc-3.34.0.jar" sql-shell.java

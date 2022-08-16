@@ -1,0 +1,50 @@
+
+.score-distribution-view {
+    height: 18rem;
+}
+
+.score-distribution-view th {
+    font-weight: normal;
+}
+
+.score-distribution-view td {
+    --color: var(--font-color-em);
+}
+
+.score-distribution-view td .info-box {
+    z-index: 4;
+    position: absolute;
+    display: none;
+    transform: translateY(-110%);
+
+    background-color: var(--background-color-sub);
+    padding: 0.25rem 0.5rem;
+
+    width: max-content;
+}
+
+.score-distribution-view td .info-box .info-field {
+    display: flex;
+}
+
+.score-distribution-view td .info-box .info-field .label {
+    display: block;
+}
+
+.score-distribution-view td .info-box .info-field .val {
+    flex: 1;
+    display: block;
+    color: var(--font-color-em);
+
+    text-align: right;
+    margin-left: 0.75rem;
+}
+
+.score-distribution-view td .info-box .info-field .val.perc::before {
+    content: '%';
+    font-size: 0.7rem;
+}
+
+.score-distribution-view td:hover .info-box {
+    display: block;
+}

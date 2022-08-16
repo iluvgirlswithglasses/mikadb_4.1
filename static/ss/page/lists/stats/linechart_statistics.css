@@ -1,0 +1,59 @@
+
+.line-chart-overflow {
+    padding-bottom: 0.75rem;
+    overflow-x: scroll;
+    overflow-y: hidden;
+    /* firefox */
+    scrollbar-height: 0.75rem;
+    scrollbar-color: var(--background-color-sub) rgba(0, 0, 0, 0);
+}
+
+/* firefox */
+.line-chart-overflow:hover {
+    scrollbar-color: var(--font-color-em) rgba(0, 0, 0, 0);
+}
+
+.line-chart-overflow::-webkit-scrollbar {
+    height: 0.75rem;
+    background: none;
+}
+
+.line-chart-overflow::-webkit-scrollbar-thumb {
+    background: var(--background-color-sub);
+    border-radius: 8px;
+}
+
+.line-chart-overflow::-webkit-scrollbar-thumb:hover {
+    background-color: var(--font-color-em);
+}
+
+.line-chart-statistic {
+    height: 16rem;
+}
+
+.line-chart-statistic th {
+    font-weight: normal;
+}
+
+.line-chart-statistic td {
+    --color: var(--font-color-em);
+}
+
+.line-chart-statistic td .val {
+    transform: translateY(-25%);
+    display: block;
+}
+
+.line-chart-statistic td .point {
+    width: 0.75rem;
+    height: 0.75rem;
+    transform: translate(5px, 4px);
+    border-radius: 50%;
+    background-color: var(--font-color-em);
+}
+
+/* special cases */
+#by-year-statistic .chart-height-12 .line-chart-statistic {
+    height: 12rem;
+}
+

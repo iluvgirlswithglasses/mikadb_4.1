@@ -1,0 +1,25 @@
+
+.audio-table .table-row,
+.audio-table .table-head {
+    display: flex;
+}
+
+/*
+.audio-table .table-head .col-{}
+.audio-table .table-row .col-{}
+*/
+.audio-table .col-title {
+    flex: 4;
+}
+
+.audio-table .col-src {
+    flex: 4;
+}
+
+.audio-table .col-tier {
+    flex: 1;
+}
+
+.audio-table .col-available {
+    width: 2rem;
+}

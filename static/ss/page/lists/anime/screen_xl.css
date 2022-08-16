@@ -1,0 +1,18 @@
+
+:root {
+    --utils-bar-width: 280px;
+}
+
+/* utils bar in the left */
+@media only screen and (min-width: 1840px) {
+    #utils-bar-menu-button {
+        display: none;
+    }
+
+    #utils-bar {
+        display: block;
+        position: absolute;
+        margin-left: calc(-2.8rem - var(--utils-bar-width));
+        width: var(--utils-bar-width);
+    }
+}

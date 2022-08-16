@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<!--suppress HtmlUnknownTarget -->
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="fragments/theme/theme_a/head :: head"></head>
+<head>
+    <meta charset="UTF-8">
+    <title>Yearly Watching Statistics</title>
+    <link rel="stylesheet" href="/ss/pallete/pearl.css">
+    <link rel="stylesheet" href="/ss/page/gallery.css">
+
+    <link rel="stylesheet" href="/chart/charts.css/dist/charts.css">
+    <link rel="stylesheet" href="/ss/page/lists/stats/select_box.css">
+    <link rel="stylesheet" href="/ss/page/lists/stats/stats.css">
+    <link rel="stylesheet" href="/ss/page/lists/stats/chart.css">
+    <link rel="stylesheet" href="/ss/page/lists/stats/field_statistics.css">
+    <link rel="stylesheet" href="/ss/page/lists/stats/score_distribution.css">
+    <link rel="stylesheet" href="/ss/page/lists/stats/linechart_statistics.css">
+</head>
+<script th:replace="fragments/theme/theme_a/script"></script>
+<script src="/js/page/lists/stats/yr_stats_selectbox.js"></script>
+
+<body>
+<div id="main-container" class="container">
+    <div th:replace="fragments/theme/theme_a/header"></div>
+
+    <!--  -->
+    <div class="section-devider">All Time Statistics</div>
+    <div class="year-stats-container" th:with="yrstat = ${ overallStats }">
+        <div th:replace="fragments/page/stats/yr-ratingdist"></div>
+    </div>
+
+    <!-- -->
+    <div class="section-devider">Year Statistics</div>
+    <div class="display-select-box" style="margin-bottom: 1rem;">
+        <p>of</p>
+        <select id="by-year-stats-select">
+            <option th:each="pair: ${ stats }"
+                    th:value="${ pair.getKey() }"
+                    th:text="${ dateDecoder.get(pair.getKey()) }"></option>
+        </select>
+    </div>
+    <div id="by-year-stats">
+        <div th:each="pair: ${ stats }"
+             th:with="yrstat = ${ pair.getValue() }"
+             th:class="'year-stats-container year-stats-' + ${ pair.getKey() }">
+            <div th:replace="fragments/page/stats/yr-ratingdist"></div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

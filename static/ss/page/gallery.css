@@ -1,0 +1,23 @@
+
+.sect {
+    background-color: var(--background-color-sub);
+    padding: 1rem 2.5rem;
+    margin-bottom: 1rem;
+
+    cursor: pointer;
+    transition: padding-left 400ms;
+}
+
+.sect:hover {
+    padding-left: 5.5rem;
+}
+
+.sect .sect-title {
+    color: var(--font-color-em);
+}
+
+.sect .sect-desc {
+    font-style: italic;
+    margin: 0;
+}
+

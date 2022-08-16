@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<!--suppress ALL -->
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<link rel="stylesheet" href="/ss/page/lists/anime/form.css">
+
+<script src="/js/theme/theme_a/skip_banner.js"></script>
+
+<div>
+    <div class="entry-form">
+        <!-- id -->
+        <div class="field-container">
+            <p class="field-label">ID</p>
+            <p th:text="${ entry.id }" class="field field-attr-id"></p>
+        </div>
+
+        <!-- title -->
+        <div class="field-container">
+            <p class="field-label">Title</p>
+            <p th:text="${ entry.title }" class="field" />
+        </div>
+
+        <!-- franchise -->
+        <div class="field-container">
+            <p class="field-label">Franchise</p>
+            <a class="field"
+               th:text="${ entry.franchise.name }"
+               th:href="${ page.stringPath } + '/franchise=' + ${ entry.franchise.name }"></a>
+        </div>
+
+        <!-- rating -->
+        <div class="field-container">
+            <p class="field-label">Rating</p>
+            <p th:text="${ ratingDecoder.RATING_FULL[entry.rating] }" class="field"></p>
+        </div>
+
+        <!-- startDate -->
+        <div class="field-container">
+            <p class="field-label">Started Date</p>
+            <div class="multiple-fields">
+                <!-- year -->
+                <p class="field">
+                    <span th:text="${ dateDecoder.get(entry.startDate.year) }"></span>
+                </p>
+                <!-- season -->
+                <p class="field">
+                    <span th:text="${ dateDecoder.getSeason(entry.startDate.season) }"></span>
+                </p>
+                <!-- month -->
+                <p class="field">
+                    <span th:text="${ dateDecoder.getMonth(entry.startDate.month) }"></span>
+                </p>
+                <!-- day -->
+                <p class="field">
+                    <span th:text="${ dateDecoder.get(entry.startDate.day) }"></span>
+                </p>
+            </div>
+        </div>
+
+        <!-- completeDate -->
+        <div class="field-container">
+            <p class="field-label">Completed Date</p>
+            <div class="multiple-fields">
+                <!-- year -->
+                <p class="field">
+                    <span th:text="${ dateDecoder.get(entry.completeDate.year) }"></span>
+                </p>
+                <!-- season -->
+                <p class="field">
+                    <span th:text="${ dateDecoder.getSeason(entry.completeDate.season) }"></span>
+                </p>
+                <!-- month -->
+                <p class="field">
+                    <span th:text="${ dateDecoder.getMonth(entry.completeDate.month) }"></span>
+                </p>
+                <!-- day -->
+                <p class="field">
+                    <span th:text="${ dateDecoder.get(entry.completeDate.day) }"></span>
+                </p>
+            </div>
+        </div>
+
+        <!-- comment -->
+        <div class="field-container">
+            <p class="field-label">Comment</p>
+            <p th:utext="${ entry.comment }" class="field"></p>
+        </div>
+    </div>
+</div>
+</html>

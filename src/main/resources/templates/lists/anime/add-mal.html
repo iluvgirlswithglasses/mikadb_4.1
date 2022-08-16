@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<!--suppress HtmlUnknownTarget -->
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="fragments/theme/theme_a/head :: head"></head>
+<head>
+    <meta charset="UTF-8">
+    <title>mikaDb</title>
+    <link rel="stylesheet" href="/ss/pallete/pearl.css">
+    <link rel="stylesheet" href="/ss/utils/button.css">
+</head>
+<script th:replace="fragments/theme/theme_a/script"></script>
+
+<body>
+<div id="main-container" class="container">
+    <header>
+        <h1>mikaDb</h1>
+        <p class="version"></p>
+    </header>
+
+    <div class="section-devider" id="main-devider">Import Entry from MAL</div>
+
+    <form id="entry-import-form" method="post" action="/lists/anime/add/mal/submit">
+        <div>
+            <input name="id" placeholder="Type in MyAnimeList ID" />
+        </div>
+        <button id="entry-import-submit" type="submit">Import</button>
+    </form>
+
+    <!--/*@thymesVar id="error" type="java.lang.String"*/-->
+    <div id="entry-import-message" style="margin-left: 2.5rem; color: var(--font-color-alt-em);" th:text="${ error }"></div>
+</div>
+</body>
+
+<script>
+    $(document).ready(() => {
+        $('#entry-import-form').submit(() => {
+            $('#entry-import-submit').prop("disabled", true);
+            $('#entry-import-message').text("Loading... Please wait...");
+        });
+    });
+</script>
+
+<style>
+    #entry-import-form {
+        display: flex;
+    }
+
+    #entry-import-form div {
+        flex: 1;
+        padding: 0.75rem 2.5rem;
+
+        background-color: var(--background-color-sub);
+        border-bottom: solid 2px var(--font-color-em);
+    }
+
+    #entry-import-form div input {
+        width: 100%;
+
+        color: var(--font-color-bright);
+        background: none;
+
+        border: none;
+    }
+
+    #entry-import-form div input:focus {
+        outline: none;
+    }
+
+    #entry-import-form button {
+        color: var(--font-color-em);
+        background-color: #000000;
+
+        padding-left: 2rem;
+        padding-right: 2rem;
+        border: none;
+    }
+</style>
+
+</html>

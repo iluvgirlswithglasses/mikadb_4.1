@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<!--suppress HtmlUnknownTarget -->
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="fragments/theme/theme_a/head :: head"></head>
+<head>
+    <meta charset="UTF-8">
+    <title>Add Leaderboard Entry</title>
+    <link rel="stylesheet" href="/ss/pallete/spring.css">
+    <link rel="stylesheet" href="/ss/utils/button.css">
+    <!-- use the form from anime -->
+    <link rel="stylesheet" href="/ss/page/lists/anime/entry_action_bar.css">
+    <link rel="stylesheet" href="/ss/page/lists/anime/form.css">
+</head>
+<script th:replace="fragments/theme/theme_a/no_banner/script"></script>
+
+<body>
+<div id="main-container" class="container">
+    <div th:replace="fragments/theme/theme_a/no_banner/header"></div>
+    <div th:text="${ leaderboard.name + ' / ' + entry.model.getTitle() }" class="section-devider" id="main-devider"></div>
+
+    <!-- the form (from anime) -->
+    <div id="entry-action-bar">
+        <a class="action-button fancy-button" th:href="'/leaderboards/entry/edit/' + ${ entry.getId() }">Edit</a>
+    </div>
+    <div class="entry-form">
+        <!-- @id -->
+        <div class="field-container">
+            <p class="field-label">ID</p>
+            <p th:text="${ entry.id }" class="field">
+        </div>
+
+        <!-- link -->
+        <div class="field-container">
+            <p class="field-label">Link (auto-gen)</p>
+            <a th:href="${ entry.model.getLink() }" th:text="${ entry.model.getLink() }" class="field"></a>
+        </div>
+
+        <!-- @entry-table -->
+        <div class="field-container">
+            <p class="field-label">Domestic List</p>
+            <p th:text="${ leaderboard.getCategory() }" class="field"></p>
+        </div>
+
+        <!-- @entry-id -->
+        <div class="field-container">
+            <p class="field-label">Domestic ID</p>
+            <p th:text="${ entry.model.entryId }" class="field"></p>
+        </div>
+
+        <!-- @leaderboard-id -->
+        <div class="field-container">
+            <p class="field-label">Leaderboard</p>
+            <p th:text="${ leaderboard.category + ' / ' + leaderboard.getName() }" class="field"></p>
+        </div>
+
+        <!-- @rank -->
+        <div class="field-container">
+            <p class="field-label">Rank</p>
+            <p th:text="${ entry.rank }" class="field"></p>
+        </div>
+
+        <!-- @description -->
+        <div class="field-container">
+            <p class="field-label">Description</p>
+            <p th:text="${ entry.description }" class="field"></p>
+        </div>
+    </div>
+</div>
+</body>
+</html>

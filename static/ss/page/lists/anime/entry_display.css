@@ -1,0 +1,92 @@
+
+/* @.dp-c.e-c (entry-container) */
+#entries-list .e-c {
+    height: 6rem;
+    margin-bottom: 0.5rem;
+
+    align-items: center;
+
+    background-color: var(--background-color-sub);
+    transition: background-color 400ms;
+
+    cursor: pointer;
+}
+
+#entries-list .e-c:hover {
+    background-color: #2e3236;
+}
+
+/* .e-i (entry-info) */
+#entries-list .e-c .e-i {
+    z-index: 4;
+
+    font-family: Calibri, "Calibri Light";
+    font-size: 1.25rem;
+}
+
+#entries-list .e-c .e-i-large-profile-pic {
+    position: absolute;
+    display: block;
+    margin-left: calc(-0.75rem - (15rem * 2 / 3));
+
+    height: 15rem;
+    width: calc(15rem * 2 / 3);
+
+    overflow: hidden;
+
+    opacity: 0;
+    transition: opacity 400ms;
+}
+
+#entries-list .e-c:hover .e-i-large-profile-pic {
+    opacity: 1;
+}
+
+#entries-list .e-c .e-i-large-profile-pic img {
+    display: block;
+    height: 100%;
+    width: auto;
+}
+
+#entries-list .e-c .e-i-state {
+    height: 100%;
+}
+
+/* .dp-p.dp-p-pp (.display-proportion.display-proportion-profile-pic) */
+#entries-list .dp-c .dp-p.dp-p-pp {
+    height: 100%;
+    overflow: hidden;
+}
+
+#entries-list .dp-c .dp-p.dp-p-pp img {
+    display: block;
+    height: 100%;
+    width: auto;
+}
+
+#entries-list .e-c .e-i-title,
+#entries-list .e-c .e-i-rating {
+    color: var(--font-color-em);
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+#entries-list .e-c .e-i-rewatch .outter {
+    height: 1.25rem;
+    width: auto;
+
+    opacity: 1;
+    background: none;
+}
+
+#entries-list .e-c .e-i-rewatch .inner {
+    position: absolute;
+    margin-left: 0.75rem;
+    opacity: 0;
+    transition: opacity 400ms;
+}
+
+#entries-list .e-c .e-i-rewatch:hover .inner {
+    opacity: 1;
+}
+

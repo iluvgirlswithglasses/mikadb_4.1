@@ -1,0 +1,13 @@
+:root {
+    --background-color-primary: #1b1f23;
+    --background-color-sub: #262a2d;
+    --background-color-em: #151f2e;
+
+    --font-color-em: #148799;
+    --font-color-alt-em: #fc6104;
+    --font-color-primary: #e0e0e0;
+    --font-color-bright: #ffffff;
+    --font-color-muted: #888888;
+
+    --selection-color: #0c5e35;
+}

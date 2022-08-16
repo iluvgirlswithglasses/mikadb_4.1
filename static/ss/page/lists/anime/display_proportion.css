@@ -1,0 +1,43 @@
+
+/* @.dp-c (display-container) */
+#entries-list .dp-c {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+}
+
+/* .gb-c (guidebar-container) */
+#entries-list .dp-c.gb-c {
+    margin-bottom: 0.75rem;
+}
+
+/* .dpp (display-proportion) */
+#entries-list .dp-c .dp-p {
+    display: block;
+    text-align: center;
+}
+
+#entries-list .dp-c .dp-p.dp-p-state {
+    width: 8px;
+}
+
+#entries-list .dp-c .dp-p.dp-p-pp {
+    width: calc(6rem * 2 / 3);
+}
+
+#entries-list .dp-c .dp-p.dp-p-title {
+    flex: 6;
+    margin-left: 2rem;
+    text-align: left;
+}
+
+#entries-list .dp-c .dp-p.dp-p-rewatch,
+#entries-list .dp-c .dp-p.dp-p-rating,
+#entries-list .dp-c .dp-p.dp-p-seen {
+    flex: 1;
+}
+
+#entries-list .dp-c .dp-p.dp-p-progress,
+#entries-list .dp-c .dp-p.dp-p-complete-date {
+    flex: 2;
+}

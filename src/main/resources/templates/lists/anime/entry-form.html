@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<!--suppress ALL -->
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<link rel="stylesheet" href="/ss/page/lists/anime/form.css">
+
+<script src="/js/theme/theme_a/skip_banner.js"></script>
+<script src="/js/page/lists/anime/state_change_handler.js"></script>
+<script src="/js/page/lists/anime/entry_form.js"></script>
+<script th:inline="javascript">
+    let entryForm;
+    let entry = [[${ entry }]];
+    $(document).ready(() => {
+        entryForm = new EntryForm();
+        // complete date
+        entryForm.completeDate[0].val("" + entry.completeDate.year);
+        entryForm.completeDate[1].val("" + entry.completeDate.season);
+        entryForm.completeDate[2].val("" + entry.completeDate.month);
+        entryForm.completeDate[3].val("" + entry.completeDate.day);
+        // start date
+        entryForm.startDate[0].val("" + entry.startDate.year);
+        entryForm.startDate[1].val("" + entry.startDate.season);
+        entryForm.startDate[2].val("" + entry.startDate.month);
+        entryForm.startDate[3].val("" + entry.startDate.day);
+    })
+</script>
+
+<div id="error-message" style="display: block; margin-left: 2.5rem; margin-bottom: 0.5rem; color: var(--font-color-alt-em);">
+    <script>
+        $(document).ready(() => {
+            const urlParams = new URLSearchParams(window.location.search);
+            if (urlParams.has("error")) {
+                $('#error-message').text(urlParams.get("error"));
+            }
+        });
+    </script>
+</div>
+<div class="form-container">
+    <div class="entry-form">
+        <!-- id -->
+        <div class="field-container">
+            <p class="field-label">ID</p>
+            <p th:text="${ entry.id }" class="field field-attr-id field-disabled"></p>
+        </div>
+
+        <!-- title -->
+        <div class="field-container">
+            <p class="field-label">Title</p>
+            <input th:value="${ entry.title }" name="title" class="field field-attr-title" />
+        </div>
+
+        <!-- franchise -->
+        <div class="field-container">
+            <p class="field-label">Franchise</p>
+            <select name="franchise" class="field field-attr-franchise">
+                <option value="">Original</option>
+                <div th:each="franchise: ${ franchises }">
+                    <div th:switch="${ franchise.name }">
+                        <option th:case="${ entry.franchise.name }" selected="selected"
+                                th:value="${ franchise.name }" th:text="${ franchise.name }"></option>
+                        <option th:case="*"
+                                th:value="${ franchise.name }" th:text="${ franchise.name }"></option>
+                    </div>
+                </div>
+            </select>
+        </div>
+
+        <!-- comment -->
+        <div class="field-container">
+            <p class="field-label">Comment</p>
+            <input th:value="${ entry.comment }" name="comment" class="field field-attr-comment" />
+        </div>
+
+        <!-- type -->
+        <div class="field-container">
+            <p class="field-label">Type</p>
+            <select name="type" class="field field-attr-type">
+                <div th:each="type, state: ${ typeDecoder.TYPE }">
+                    <div th:switch="${ state.index }">
+                        <option th:case="${ entry.type }" selected="selected"
+                                th:value="${ state.index }" th:text="${ type }"></option>
+                        <option th:case="*"
+                                th:value="${ state.index }" th:text="${ type }"></option>
+                    </div>
+                </div>
+            </select>
+        </div>
+
+        <!-- state -->
+        <div class="field-container">
+            <p class="field-label">State</p>
+            <select name="state" class="field field-attr-state">
+                <div th:each="s, state: ${ stateDecoder.STATE }">
+                    <div th:switch="${ state.index }">
+                        <option th:case="${ entry.state }" selected="selected"
+                                th:value="${ state.index }" th:text="${ s }"></option>
+                        <option th:case="*"
+                                th:value="${ state.index }" th:text="${ s }"></option>
+                    </div>
+                </div>
+            </select>
+        </div>
+
+        <!-- seen -->
+        <div class="field-container">
+            <p class="field-label">Seen</p>
+            <input th:value="${ entry.seen }" name="seen" class="field field-attr-seen" type="number" />
+        </div>
+
+        <!-- progress -->
+        <div class="field-container">
+            <p class="field-label">Progress</p>
+            <div class="field field-attr-progress" style="display: flex; flex-direction: row; user-select: none;">
+                <span class="prog" th:text="${ entry.getProgress } + ' / ' + ${ entry.episodes }"></span>
+                <svg class="addition-button" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#fc6104" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+            </div>
+        </div>
+
+        <!-- rating -->
+        <div class="field-container">
+            <p class="field-label">Rating</p>
+            <select name="rating" class="field field-attr-rating">
+                <div th:each="rating, state: ${ ratingDecoder.RATING_SHORT }">
+                    <div th:switch="${ state.index }">
+                        <option th:case="${ entry.rating }" selected="selected"
+                                th:value="${ state.index }" th:utext="${ ratingDecoder.getTextHtml(state.index) }"></option>
+                        <option th:case="*"
+                                th:value="${ state.index }" th:utext="${ ratingDecoder.getTextHtml(state.index) }"></option>
+                    </div>
+                </div>
+            </select>
+        </div>
+
+        <!-- startDate -->
+        <div class="field-container">
+            <p class="field-label">Started Date</p>
+            <div class="multiple-fields">
+                <!-- year -->
+                <select name="start-date-year" class="field field-attr-start-date-year">
+                    <!-- 1 == YEAR in Calendar -->
+                    <option value="-2">Unknown</option>
+                    <option value="9999">Watching</option>
+                    <div th:each="i: ${#numbers.sequence(today.get(1), 1960)}">
+                        <option th:value="${ i }" th:text="${ i }"></option>
+                    </div>
+                </select>
+                <!-- season -->
+                <select name="start-date-season" class="field field-attr-start-date-season">
+                    <option value="-2">Unknown</option>
+                    <option value="9999">Watching</option>
+                    <div th:each="season, state: ${ dateDecoder.SEASON }">
+                        <option th:value="${ state.index }" th:text="${ season }"></option>
+                    </div>
+                </select>
+                <!-- month -->
+                <select name="start-date-month" class="field field-attr-start-date-month">
+                    <option value="-2">Unknown</option>
+                    <option value="9999">Watching</option>
+                    <div th:each="month, state: ${ dateDecoder.MONTH }">
+                        <option th:value="${ state.index }" th:text="${ month }"></option>
+                    </div>
+                </select>
+                <!-- day -->
+                <select name="start-date-day" class="field field-attr-start-date-day">
+                    <option value="-2">Unknown</option>
+                    <option value="9999">Watching</option>
+                    <div th:each="i: ${#numbers.sequence(1, 31)}">
+                        <option th:value="${ i }" th:text="${ i }"></option>
+                    </div>
+                </select>
+            </div>
+        </div>
+
+        <!-- completeDate -->
+        <div class="field-container">
+            <p class="field-label">Completed Date</p>
+            <div class="multiple-fields">
+                <!-- year -->
+                <select name="complete-date-year" class="field field-attr-complete-date-year">
+                    <!-- 1 == YEAR in Calendar -->
+                    <option value="-2">Unknown</option>
+                    <option value="9999">Watching</option>
+                    <div th:each="i: ${#numbers.sequence(today.get(1), 1960)}">
+                        <option th:value="${ i }" th:text="${ i }"></option>
+                    </div>
+                </select>
+                <!-- season -->
+                <select name="complete-date-season" class="field field-attr-complete-date-season">
+                    <option value="-2">Unknown</option>
+                    <option value="9999">Watching</option>
+                    <div th:each="season, state: ${ dateDecoder.SEASON }">
+                        <option th:value="${ state.index }" th:text="${ season }"></option>
+                    </div>
+                </select>
+                <!-- month -->
+                <select name="complete-date-month" class="field field-attr-complete-date-month">
+                    <option value="-2">Unknown</option>
+                    <option value="9999">Watching</option>
+                    <div th:each="month, state: ${ dateDecoder.MONTH }">
+                        <option th:value="${ state.index }" th:text="${ month }"></option>
+                    </div>
+                </select>
+                <!-- day -->
+                <select name="complete-date-day" class="field field-attr-complete-date-day">
+                    <option value="-2">Unknown</option>
+                    <option value="9999">Watching</option>
+                    <div th:each="i: ${#numbers.sequence(1, 31)}">
+                        <option th:value="${ i }" th:text="${ i }"></option>
+                    </div>
+                </select>
+            </div>
+        </div>
+
+        <!-- episodes -->
+        <div class="field-container">
+            <p class="field-label">Episodes</p>
+            <input th:value="${ entry.episodes }" name="episodes" class="field field-attr-episodes" type="number" />
+        </div>
+
+        <!-- duration -->
+        <div class="field-container">
+            <p class="field-label">Dur/ep</p>
+            <input th:value="${ entry.duration }" name="duration" class="field field-attr-duration" type="number" />
+        </div>
+
+        <!-- rewatch notes -->
+        <div class="field-container">
+            <p class="field-label">Rewatch Notes</p>
+            <input th:value="${ entry.rewatchNotes }" name="rewatch-notes" class="field field-attr-rewatch-notes" />
+        </div>
+    </div>
+
+    <span class="note" style="display: block; margin-left: 2.5rem; margin-bottom: 0.5rem;"
+        >These fields are often be auto completed by <span style="color: var(--font-color-em); font-weight: bold"
+        >MAL-API</span></span>
+
+    <div class="entry-form">
+        <!-- malId -->
+        <div class="field-container">
+            <p class="field-label">MAL ID</p>
+            <input th:value="${ entry.malId }" name="mal-id" class="field field-attr-mal-id">
+        </div>
+
+        <!-- malURL -->
+        <div class="field-container">
+            <p class="field-label">MAL URL</p>
+            <input th:value="${ entry.malURL }" name="mal-url" class="field field-attr-mal-url">
+        </div>
+
+        <!-- titleEnglish -->
+        <div class="field-container">
+            <p class="field-label">English Title</p>
+            <input th:value="${ entry.titleEnglish }" name="title-english" class="field field-attr-title-english">
+        </div>
+
+        <!-- titleJapanese -->
+        <div class="field-container">
+            <p class="field-label">Japanese Title</p>
+            <input th:value="${ entry.titleJapanese }" name="title-japanese" class="field field-attr-title-japanese">
+        </div>
+
+        <!-- source -->
+        <div class="field-container">
+            <p class="field-label">Source</p>
+            <input th:value="${ entry.source }" name="source" class="field field-attr-source">
+        </div>
+
+        <!-- status -->
+        <div class="field-container">
+            <p class="field-label">Status</p>
+            <input th:value="${ entry.status }" name="status" class="field field-attr-status">
+        </div>
+
+        <!-- premiered -->
+        <div class="field-container">
+            <p class="field-label">Premiered</p>
+            <input th:value="${ entry.premiered }" name="premiered" class="field field-attr-premiered">
+        </div>
+
+        <!-- aired -->
+        <div class="field-container">
+            <p class="field-label">Aired Date</p>
+            <div class="multiple-fields">
+                <!-- year -->
+                <select name="aired-year" class="field field-attr-aired-year">
+                    <option value="9999">Currently Airing</option>
+                    <!-- 1 == YEAR in Calendar -->
+                    <div th:each="i: ${#numbers.sequence(today.get(1), 1960)}">
+                        <div th:switch="${ i }">
+                            <option th:case="${ entry.aired.get(1) }" selected="selected"
+                                    th:value="${ i }" th:text="${ i }"></option>
+                            <option th:case="*"
+                                    th:value="${ i }" th:text="${ i }"></option>
+                        </div>
+                    </div>
+                </select>
+                <!-- month -->
+                <select name="aired-month" class="field field-attr-aired-month">
+                    <!-- 2 == MONTH in Calendar -->
+                    <div th:each="month, state: ${ dateDecoder.MONTH }">
+                        <div th:switch="${ state.index }">
+                            <option th:case="${ entry.aired.get(2) }" selected="selected"
+                                    th:value="${ state.index }" th:text="${ month }"></option>
+                            <option th:case="*"
+                                    th:value="${ state.index }" th:text="${ month }"></option>
+                        </div>
+                    </div>
+                </select>
+                <!-- day -->
+                <select name="aired-day" class="field field-attr-aired-day">
+                    <!-- 5 == DAY_OF_MONTH in Calendar -->
+                    <div th:each="i: ${#numbers.sequence(1, 31)}">
+                        <div th:switch="${ i }">
+                            <option th:case="${ entry.aired.get(5) }" selected="selected"
+                                    th:value="${ i }" th:text="${ i }"></option>
+                            <option th:case="*"
+                                    th:value="${ i }" th:text="${ i }"></option>
+                        </div>
+                    </div>
+                </select>
+            </div>
+        </div>
+
+        <!-- finishedAiring -->
+        <div class="field-container">
+            <p class="field-label">Finished Airing</p>
+            <div class="multiple-fields">
+                <!-- year -->
+                <select name="finished-airing-year" class="field field-attr-finished-airing-year">
+                    <option value="9999">Currently Airing</option>
+                    <!-- 1 == YEAR in Calendar -->
+                    <div th:each="i: ${#numbers.sequence(today.get(1), 1960)}">
+                        <div th:switch="${ i }">
+                            <option th:case="${ entry.finishedAiring.get(1) }" selected="selected"
+                                    th:value="${ i }" th:text="${ i }"></option>
+                            <option th:case="*"
+                                    th:value="${ i }" th:text="${ i }"></option>
+                        </div>
+                    </div>
+                </select>
+                <!-- month -->
+                <select name="finished-airing-month" class="field field-attr-finished-airing-month">
+                    <!-- 2 == MONTH in Calendar -->
+                    <div th:each="month, state: ${ dateDecoder.MONTH }">
+                        <div th:switch="${ state.index }">
+                            <option th:case="${ entry.finishedAiring.get(2) }" selected="selected"
+                                    th:value="${ state.index }" th:text="${ month }"></option>
+                            <option th:case="*"
+                                    th:value="${ state.index }" th:text="${ month }"></option>
+                        </div>
+                    </div>
+                </select>
+                <!-- day -->
+                <select name="finished-airing-day" class="field field-attr-finished-airing-day">
+                    <!-- 5 == DAY_OF_MONTH in Calendar -->
+                    <div th:each="i: ${#numbers.sequence(1, 31)}">
+                        <div th:switch="${ i }">
+                            <option th:case="${ entry.finishedAiring.get(5) }" selected="selected"
+                                    th:value="${ i }" th:text="${ i }"></option>
+                            <option th:case="*"
+                                    th:value="${ i }" th:text="${ i }"></option>
+                        </div>
+                    </div>
+                </select>
+            </div>
+        </div>
+
+        <!-- openingThemes -->
+        <div class="field-container">
+            <p class="field-label">Opening Themes</p>
+            <p name="opening-themes" class="field field-attr-opening-themes field-disabled" disabled>
+                <span th:each="op: ${ entry.openingThemes }">
+                    <span th:text="${ op }"></span>,<br/>
+                </span>
+            </p>
+        </div>
+
+        <!-- endingThemes -->
+        <div class="field-container">
+            <p class="field-label">Ending Themes</p>
+            <p name="ending-themes" class="field field-attr-ending-themes field-disabled" disabled>
+                <span th:each="ed: ${ entry.endingThemes }">
+                    <span th:text="${ ed }"></span>,<br/>
+                </span>
+            </p>
+        </div>
+
+        <!-- studios -->
+        <div class="field-container">
+            <p class="field-label">Studios</p>
+            <p name="studios" class="field field-attr-studios field-disabled" disabled>
+                <span th:each="s: ${ entry.studios }">
+                    <span th:text="${ s }"></span>,<br/>
+                </span>
+            </p>
+        </div>
+
+        <!-- studios -->
+        <div class="field-container">
+            <p class="field-label">Genres</p>
+            <p name="genres" class="field field-attr-genres field-disabled" disabled>
+                <span th:each="s: ${ entry.genres }">
+                    <span th:text="${ s }"></span>,<br/>
+                </span>
+            </p>
+        </div>
+
+        <!-- producers -->
+        <div class="field-container">
+            <p class="field-label">Producers</p>
+            <p name="producers" class="field field-disabled field-attr-producers" disabled>
+                <span th:each="p: ${ entry.producers }">
+                    <span th:text="${ p }"></span>,<br/>
+                </span>
+            </p>
+        </div>
+
+        <!-- licensors -->
+        <div class="field-container">
+            <p class="field-label">Licensors</p>
+            <p name="licensors" class="field field-disabled field-attr-licensors" disabled>
+                <span th:each="l: ${ entry.licensors }">
+                    <span th:text="${ l }"></span>,<br/>
+                </span>
+            </p>
+        </div>
+    </div>
+</div>
+</html>

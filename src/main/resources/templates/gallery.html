@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<!--suppress HtmlUnknownTarget -->
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="fragments/theme/theme_a/head :: head"></head>
+<head>
+    <meta charset="UTF-8">
+    <title>mikaDb Gallery</title>
+    <link rel="stylesheet" href="/ss/pallete/spring.css">
+    <link rel="stylesheet" href="/ss/page/gallery.css">
+</head>
+<script th:replace="fragments/theme/theme_a/script"></script>
+
+<body>
+    <div id="main-container" class="container">
+        <div th:replace="fragments/theme/theme_a/header"></div>
+
+        <!--  -->
+        <div class="section-devider">Miscellaneous</div>
+
+        <div class="sect" onclick="window.location.href='/gallery/changes-log'">
+            <h4 class="sect-title">Changes Log</h4>
+            <p class="sect-desc">Feature changes since 28-July-2022</p>
+        </div>
+
+        <div class="sect" onclick="window.location.href='/gallery/the-single-sys'">
+            <h4 class="sect-title">The Single Rating System</h4>
+            <p class="sect-desc">The current Rating System.</p>
+        </div>
+
+        <div class="sect" onclick="window.location.href='/gallery/chitoyuuki-sys'">
+            <h4 class="sect-title">Chito Yuuki Rating System</h4>
+            <p class="sect-desc">View an old scoring method, as well as taking a reminiscence of the older ones.</p>
+        </div>
+
+        <div class="sect" onclick="window.location.href='/gallery/monthly-ranking'">
+            <h4 class="sect-title">Monthly Ranking</h4>
+            <p class="sect-desc">Best of the months since 2021.</p>
+        </div>
+    </div>
+</body>
+</html>
