@@ -12,59 +12,59 @@ import java.util.Calendar;
 import java.util.List;
 
 public class GameModel {
-	private static RatingDecoder ratingDecoder = RatingDecoder.getInstance();
+    private static RatingDecoder ratingDecoder = RatingDecoder.getInstance();
 
-	/**
-	 * @fields
-	 * */
-	private int id;
-	private String title;
-	private FranchiseModel franchise;
-	private int rating;
-	private SeasonalDate startDate;
-	private SeasonalDate completeDate;
-	private String comment;
+    /**
+     * @fields
+     * */
+    private int id;
+    private String title;
+    private FranchiseModel franchise;
+    private int rating;
+    private SeasonalDate startDate;
+    private SeasonalDate completeDate;
+    private String comment;
 
-	@Override
-	public String toString() {
-		return String.format("[%s] - %s", id, title);
-	}
+    @Override
+    public String toString() {
+        return String.format("[%s] - %s", id, title);
+    }
 
-	/**
-	 * @contructors
-	 * */
-	public GameModel() {
-		id = -1;
-		title = "";
-		franchise = new FranchiseModel(title, "game");
-		rating = ratingDecoder.indexOf(ratingDecoder.RATING_SHORT, "N/A");
-		startDate = new SeasonalDate();
-		completeDate = new SeasonalDate();
-		comment = "";
-	}
+    /**
+     * @contructors
+     * */
+    public GameModel() {
+        id = -1;
+        title = "";
+        franchise = new FranchiseModel(title, "game");
+        rating = ratingDecoder.indexOf(ratingDecoder.RATING_SHORT, "N/A");
+        startDate = new SeasonalDate();
+        completeDate = new SeasonalDate();
+        comment = "";
+    }
 
-	public GameModel(
-		int _id,
-		String _title,
-		FranchiseModel _franchise,
-		int _rating,
-		SeasonalDate _startDate,
-		SeasonalDate _completeDate,
-		String _comment
-	) {
-		id = _id;
-		title = _title;
-		franchise = _franchise;
-		rating = _rating;
-		startDate = _startDate;
-		completeDate = _completeDate;
-		comment = _comment;
-	}
+    public GameModel(
+        int _id,
+        String _title,
+        FranchiseModel _franchise,
+        int _rating,
+        SeasonalDate _startDate,
+        SeasonalDate _completeDate,
+        String _comment
+    ) {
+        id = _id;
+        title = _title;
+        franchise = _franchise;
+        rating = _rating;
+        startDate = _startDate;
+        completeDate = _completeDate;
+        comment = _comment;
+    }
 
-	/**
-	 * @getters
-	 * */
-	public String getProfilePic() throws URISyntaxException {
+    /**
+     * @getters
+     * */
+    public String getProfilePic() throws URISyntaxException {
         return new GameDAO().getProfilePic(id);
     }
 

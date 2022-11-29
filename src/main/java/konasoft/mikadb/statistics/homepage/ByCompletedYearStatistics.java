@@ -9,10 +9,10 @@ public class ByCompletedYearStatistics extends ByAiredYearStatistics {
 
     @Override
     public void iterationHandler(AnimeModel anime) {
-    	// 7 == "Plan to Watch", defined in StateDecoder
+        // 7 == "Plan to Watch", defined in StateDecoder
         // 3 == "Enqueued"
-    	if (anime.getState() == 8 || anime.getState() == 3) return;
-    	//
+        if (anime.getState() == 8 || anime.getState() == 3) return;
+        //
         int year = anime.getCompleteDate().getYear();
         // "watching" take part in current year
         if (year == SeasonalDate.WATCHING) year = Calendar.getInstance().get(Calendar.YEAR);

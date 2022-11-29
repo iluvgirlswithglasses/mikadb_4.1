@@ -1,18 +1,18 @@
-aired../>>>Apr 10, 2013 to Jun 26, 2013
-duration../>>>23 min. per ep.
-ending_themes../>>>['"Affection" by Mayumi Morinaga (eps 1-11)']
-episodes../>>>12
-genres../>>>['Comedy', 'Slice of Life']
-licensors../>>>['Sentai Filmworks']
-mal_id../>>>15911
-opening_themes../>>>['"Se-no! (せーのっ!)" by Jouhoushori-bu (Rumi Ookubo, Risa Taneda, Minami Tsuda)']
-premiered../>>>Spring 2013
-producers../>>>['Geneon Universal Entertainment', 'Magic Capsule', 'Showgate', 'Houbunsha', 'Exit Tunes']
-source../>>>4-koma manga
+aired../>>>Jul 2, 2022 to Sep 24, 2022
+duration../>>>24 min. per ep.
+ending_themes../>>>['"Hana no Tou (花の塔)" by Sayuri']
+episodes../>>>13
+genres../>>>['Action']
+licensors../>>>['Aniplex of America']
+mal_id../>>>50709
+opening_themes../>>>['"ALIVE" by ClariS']
+premiered../>>>Summer 2022
+producers../>>>['Aniplex', 'BS11', 'ABC Animation']
+source../>>>Original
 status../>>>Finished Airing
-studios../>>>['Kinema Citrus']
-title../>>>Yuyushiki
-title_english../>>>Yuyushiki
-title_japanese../>>>ゆゆ式
+studios../>>>['A-1 Pictures']
+title../>>>Lycoris Recoil
+title_english../>>>Lycoris Recoil
+title_japanese../>>>リコリス・リコイル
 type../>>>TV
-url../>>>https://myanimelist.net/anime/15911/Yuyushiki
+url../>>>https://myanimelist.net/anime/50709/Lycoris_Recoil

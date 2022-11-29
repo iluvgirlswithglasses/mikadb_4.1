@@ -21,9 +21,9 @@ import java.util.*;
 import java.util.function.Function;
 
 public class GameDAO extends DAO<GameModel> {
-	/**
-	 * infos
-	 * */
+    /**
+     * infos
+     * */
     public static final String TABLE_NAME = "game";
 
     private static RatingDecoder ratingDecoder = RatingDecoder.getInstance();
@@ -63,23 +63,23 @@ public class GameDAO extends DAO<GameModel> {
 
     @Override
     public GameModel objectConstructor(ResultSet rs) throws SQLException {
-    	CalendarParser calendarParser = new CalendarParser();
-    	return new GameModel(
-    		rs.getInt("id"),
-    		rs.getString("title"),
-    		new FranchiseModel(rs.getString("franchise"), "game"),
-    		rs.getInt("rating"),
-    		calendarParser.sqliteStringToSeasonalDate(rs.getString("start_date")),
-    		calendarParser.sqliteStringToSeasonalDate(rs.getString("complete_date")),
-    		rs.getString("comment")
-    	);
+        CalendarParser calendarParser = new CalendarParser();
+        return new GameModel(
+            rs.getInt("id"),
+            rs.getString("title"),
+            new FranchiseModel(rs.getString("franchise"), "game"),
+            rs.getInt("rating"),
+            calendarParser.sqliteStringToSeasonalDate(rs.getString("start_date")),
+            calendarParser.sqliteStringToSeasonalDate(rs.getString("complete_date")),
+            rs.getString("comment")
+        );
     }
 
     @Override
     public void add(GameModel e) throws SQLException {
-    	String statement = String.format(
-    		"insert into %s (%s) values (%s)", TABLE_NAME, prepareSqliteColumns(), prepareSqliteValues()
-    	);
+        String statement = String.format(
+            "insert into %s (%s) values (%s)", TABLE_NAME, prepareSqliteColumns(), prepareSqliteValues()
+        );
         executeUpdate(e, statement);
     }
 
@@ -94,14 +94,14 @@ public class GameDAO extends DAO<GameModel> {
     @Override
     // follow STRICTLY the order from FIELDS
     public void passParams(GameModel e, PreparedStatement st) throws SQLException {
-    	CalendarParser calendarParser = new CalendarParser();
-    	int i = 0;
-    	st.setString(++i, e.getTitle());
-    	st.setString(++i, e.getFranchise().getName());
-    	st.setInt(++i, e.getRating());
-    	st.setString(++i, calendarParser.seasonalDateToSQLiteString(e.getStartDate()));
-    	st.setString(++i, calendarParser.seasonalDateToSQLiteString(e.getCompleteDate()));
-    	st.setString(++i, e.getComment());
+        CalendarParser calendarParser = new CalendarParser();
+        int i = 0;
+        st.setString(++i, e.getTitle());
+        st.setString(++i, e.getFranchise().getName());
+        st.setInt(++i, e.getRating());
+        st.setString(++i, calendarParser.seasonalDateToSQLiteString(e.getStartDate()));
+        st.setString(++i, calendarParser.seasonalDateToSQLiteString(e.getCompleteDate()));
+        st.setString(++i, e.getComment());
     }
 
     private void executeUpdate(GameModel e, String statement) throws SQLException {
