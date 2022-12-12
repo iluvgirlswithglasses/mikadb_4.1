@@ -20,6 +20,8 @@ They have hover animation too!
 
 There are four lists, each looks like this:
 
+![2022-12-12_18-47](https://user-images.githubusercontent.com/58514512/207037733-12152c27-ed44-4ce6-852a-e5bac51a64d4.png)
+
 ![2022-12-12_18-32](https://user-images.githubusercontent.com/58514512/207036594-a7598733-30e2-42bf-9f86-74ea156184b8.png)
 
 Each list item also has many details and attributes:
