@@ -34,11 +34,15 @@ For anime entries, this webapp can import an anime's details via MAL API:
 
 ![2022-12-12_18-36](https://user-images.githubusercontent.com/58514512/207037066-15204566-43d5-49bf-b355-2787b7ea8171.png)
 
+# Leaderboards
+
 There is also a system which resembles MAL's favorite, but with more freedom!
 
 ![2022-12-12_18-34](https://user-images.githubusercontent.com/58514512/207037199-b24caad0-dbbf-4563-8357-7ee6f31024a6.png)
 
-And a blog system:
+# Gallery
+
+A blog system:
 
 ![2022-12-12_18-34_1](https://user-images.githubusercontent.com/58514512/207037227-77ac1af8-743a-450a-b02c-2c6eb95fb18c.png)
 
