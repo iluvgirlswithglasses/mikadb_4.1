@@ -1,18 +1,18 @@
-aired../>>>Jul 2, 2022 to Sep 24, 2022
+aired../>>>Apr 3, 1998 to Apr 24, 1999
 duration../>>>24 min. per ep.
-ending_themes../>>>['"Hana no Tou (花の塔)" by Sayuri']
-episodes../>>>13
-genres../>>>['Action']
-licensors../>>>['Aniplex of America']
-mal_id../>>>50709
-opening_themes../>>>['"ALIVE" by ClariS']
-premiered../>>>Summer 2022
-producers../>>>['Aniplex', 'BS11', 'ABC Animation']
+ending_themes../>>>['"The Real Folk Blues" by The Seatbelts feat. Mai Yamane (eps  1-12, 14-25)', '"Space Lion" by The Seatbelts (eps 13)', '"Blue" by The Seatbelts feat. Mai Yamane (eps 26)']
+episodes../>>>26
+genres../>>>['Action', 'Sci-Fi']
+licensors../>>>['Funimation', 'Bandai Entertainment']
+mal_id../>>>1
+opening_themes../>>>['"Tank!" by The Seatbelts (eps 1-25)']
+premiered../>>>Spring 1998
+producers../>>>['Bandai Visual']
 source../>>>Original
 status../>>>Finished Airing
-studios../>>>['A-1 Pictures']
-title../>>>Lycoris Recoil
-title_english../>>>Lycoris Recoil
-title_japanese../>>>リコリス・リコイル
+studios../>>>['Sunrise']
+title../>>>Cowboy Bebop
+title_english../>>>Cowboy Bebop
+title_japanese../>>>カウボーイビバップ
 type../>>>TV
-url../>>>https://myanimelist.net/anime/50709/Lycoris_Recoil
+url../>>>https://myanimelist.net/anime/1/Cowboy_Bebop
